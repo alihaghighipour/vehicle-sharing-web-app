@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,7 +55,7 @@ public class VeicoloRestController {
 		return this.veicoloService.getAllByDisponibilita();
 	}
 	
-	@PostMapping
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Veicolo> addVeicolo(@RequestBody Veicolo veicolo) {
 		this.veicoloService.addOne(veicolo);
 		return new ResponseEntity<Veicolo>(veicolo, HttpStatus.CREATED);

@@ -1,7 +1,5 @@
-// evento -> recuperare i campi -> chiamare api -> salvare veicolo
-// to do : controlli diversi sui campi (regex per coordianti)
-$('#form-inserimento').submit(function(e){
-   
+$('#form-inserimento').submit(function (e) {
+
    e.preventDefault();
 
    var nuovoVeicolo = {
@@ -13,19 +11,31 @@ $('#form-inserimento').submit(function(e){
       posizione: $('#form-coordinate').val(),
       disponibile: true,
       dataPrenotazione: null,
-      immagineUrl: "url"
-   } 
+      immagineUrl: "https://source.unsplash.com/400x200/?auto"
+   }
 
    $.ajax({
-      url: 'http://localhost:8080/noleggio-veicoli/api/veicoli',
+      url: 'http://localhost:9020/noleggio-veicoli/api/veicoli',
       type: 'POST',
       data: JSON.stringify(nuovoVeicolo),
-      dataType: 'application/json',
-      success: function(msg) {
-         alert('Data Saved: ' + msg);
+      contentType: 'application/json',
+      dataType: 'json',
+      success: function () {
+         //myModal.show()
+         $("#demo").removeClass("d-none");
+         $('#form-modello').val("");
+         $('#form-cilindrata').val("");
+         $('#form-coordinate').val("");
+         $('#form-colore').val("");
+         $("#form-categoria option:selected").val([0]);
+         $('input[name="btnradio"]').checked = false;
       },
-      error: function(e) {
+      error: function (e) {
          alert('Error: ' + e);
       }
    })
+})
+
+$("#form-categoria").focus(function () {
+   $("#demo").addClass("d-none");
 })

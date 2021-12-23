@@ -1,17 +1,70 @@
+body {
+   background-color: #F5F5F5;
+}
+
 img {
    max-width: 100%;
    height: auto;
 }
 
-.bg-img {
-   background-image: url(/img/home/banner.jpg);
-   background-position: center center;
-   background-size: cover;
-   background-repeat: no-repeat;
-   height: 50vh;
+.margin {
+   height: 126px;
+   background-color: #9ccd76;
 }
+
+.hamburger {
+   color: white;
+}
+
+.btnLogin {
+   background-color: greenyellow;
+}
+
+.navbar {
+   background-color: #9ccd76f3;
+
+}
+
+.nav-link {
+   color: honeydew;
+}
+
+.servizi {
+   text-align: center;
+}
+
+.servizi h3 {
+   margin-top: 1.5rem;
+}
+
+.servizi img {
+   border-radius: 50%;
+   /* -webkit-box-shadow: 9px 12px 57px 4px #A8A8A8;
+   -moz-box-shadow: 9px 12px 57px 4px #A8A8A8;
+   -o-box-shadow: 9px 12px 57px 4px #A8A8A8;
+   box-shadow: 9px 12px 57px 4px #A8A8A8; */
+}
+
+.info {
+   margin-top: 10rem;
+}
+
+
+
+/* CAROUSEL */
 
 .swiper {
    width: 100%;
-   height: 50vh;
+   /* height: auto; */
+}
+
+.carousel {
+   margin-top: 5rem;
+}
+
+/* ------------ */
+
+
+.homeVideo video {
+   width: 100%;
 }
