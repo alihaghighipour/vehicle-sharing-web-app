@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <link rel="stylesheet" href="style/admin.css">
+   <title>Aggiunta Veicoli</title>
+</head>
+
+<body>
+
+   <div class="logoAdmin">
+      <img src="img/admin/Admin.jpg" alt="">
+   </div>
+
+   <div class="container">
+
+      <div class="logo">
+         <img src="https://www.limontasport.com/wp-content/uploads/2016/04/logo-ambiente-sicurezza-2.png" alt="">
+      </div>
+
+      <div class="form-container">
+         <h2>Aggiungi Veicolo</h2>
+         <form>
+            <!-- TIPOLOGIA VEICOLO -->
+            <div class="mb-3">
+               <select class="form-select" aria-label="Default select example">
+                  <option selected>Tipologia Veicolo</option>
+                  <option value="1">Automobile</option>
+                  <option value="2">Monopattino</option>
+                  <option value="3">Bicicletta</option>
+                  <option value="4">Speciale</option>
+               </select>
+            </div>
+
+            <!-- ALIMENTAZIONE -->
+            <div class="mb-3">
+               <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio1">Elettrico</label>
+
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio1">Hybrid</label>
+
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio2">Benzina</label>
+
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio3">Diesel</label>
+               </div>
+            </div>
+
+            <!-- DESCRIZIONE -->
+            <div class="form-floating mb-3">
+               <input type="text" class="form-control" placeholder="Leave a comment here"
+                  id="floatingTextarea"></textarea>
+               <label for="floatingTextarea">Modello</label>
+            </div>
+            <div class="form-floating mb-3">
+               <input type="text" class="form-control" placeholder="Leave a comment here"
+                  id="floatingTextarea"></textarea>
+               <label for="floatingTextarea">Colore</label>
+            </div>
+            <div class="form-floating mb-3">
+               <input type="number" min="50" max="5000" class="form-control" placeholder="Leave a comment here"
+                  id="floatingTextarea"></textarea>
+               <label for="floatingTextarea">Cilindrata (es. 1200)</label>
+            </div>
+
+            <!-- CARICA IMMAGINE -->
+            <div class="mb-3">
+               <label for="formFileLg" class="form-label">Carica Immagine</label>
+               <input class="form-control form-control" id="formFileLg" type="file">
+            </div>
+
+            <!-- POSIZIONE -->
+            <div class="form-floating mb-3">
+               <input type="text" class="form-control" placeholder="Leave a comment here"
+                  id="floatingTextarea"></textarea>
+               <label for="floatingTextarea">Coordinate (es 45.07067905525777, 7.685904492619456)</label>
+            </div>
+            <button type="submit"
+               class="btn btn-primary d-grid gap-2 col-12 rounded-pill mx-auto mt-5 p-3">Aggiungi</button>
+         </form>
+      </div>
+
+
+
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+   </script>
+</body>
+
+</html>
