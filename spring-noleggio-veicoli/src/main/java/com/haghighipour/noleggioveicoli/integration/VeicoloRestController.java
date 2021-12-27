@@ -61,7 +61,7 @@ public class VeicoloRestController {
 		return new ResponseEntity<Veicolo>(veicolo, HttpStatus.CREATED);
 	}
 	
-	@PutMapping
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void updateVeicolo(@RequestBody Veicolo veicolo) {
 		this.veicoloService.updateOne(veicolo);
 	}

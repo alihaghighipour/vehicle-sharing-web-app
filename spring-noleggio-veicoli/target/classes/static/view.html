@@ -19,7 +19,7 @@
       </button>
       <div class="form-container">
          <div class="mb-3">
-            <select class="form-select" aria-label="Default select example" id="form-categoria">
+            <select class="form-select" aria-label="Default select example" id="form-categoria-filtro">
                <option selected value="0">Categoria Veicolo</option>
                <option value="1">Automobile</option>
                <option value="2">Monopattino</option>
@@ -43,7 +43,7 @@
             <div class="modal-body">
                <div class="form-container">
                   <h2>Modifica Veicolo</h2>
-                  <form id="form-inserimento">
+                  <form id="form-modifica">
                      <!-- TIPOLOGIA VEICOLO -->
                      <div class="mb-3">
                         <select class="form-select" aria-label="Default select example" id="form-categoria">
@@ -103,10 +103,10 @@
                         <label for="form-coordinate">Coordinate (es 45.07067905525777, 7.685904492619456)</label>
                      </div>
                      <div id="demo" class="mb-1 mt-1 d-none">
-                        <p><i class="fas fa-check-circle"></i> Veicolo aggiunto con successo!</p>
+                        <p><i class="fas fa-check-circle"></i> Veicolo modificato con successo!</p>
                      </div>
                      <button type="submit" class="btn btn-primary d-grid gap-2 col-12 rounded-pill mx-auto mt-5 p-3"
-                        id="modifica">Applica</button>
+                        id="btnApplica">Applica</button>
                   </form>
                </div>
             </div>
@@ -118,8 +118,8 @@
    </div>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhu+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
    </script>
    <script src="script/view.js"></script>
 </body>

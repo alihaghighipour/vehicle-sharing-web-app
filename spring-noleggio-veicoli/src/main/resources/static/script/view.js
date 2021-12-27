@@ -6,7 +6,6 @@ $().ready(function () {
       success: function (data) {
 
          data.forEach(element => {
-            console.log(element);
 
             $("#lista").append(`<div class="col" id="card-` + element.id + `">
                <img src="https://source.unsplash.com/400x200/?auto" class="img-top" alt="...">
@@ -20,47 +19,19 @@ $().ready(function () {
                </div>
              </div>`)
 
-            $("#elimina-" + element.id).click(function () {
+            $("#elimina-" + element.id).click({veicolo: element}, eliminaVeicolo);
 
-               $.ajax({
-                  url: 'http://localhost:9020/noleggio-veicoli/api/veicoli/' + element.id,
-                  type: "DELETE",
-                  dataType: "json",
-                  complete: function () {
-
-                     //$("#card-" + element.id).removeClass("card");
-                     $("#card-" + element.id).html("");
-
-                     //document.getElementById("lista").removeChild("#card-" + element.id)
-
-                  }
-               })
-
-            })
-
-            //   $("#modifica").click(function(){
-            //     $.ajax({
-            //     url: 'http://localhost:9020/noleggio-veicoli/api/veicoli',
-            //     type: "PUT",
-            //     cotentType: "application/json",
-            //     dataType: "json",
-
-            //   })
-            // })
-
-
+            $("#modifica-" + element.id).click({veicolo: element}, modificaVeicolo);
          });
-
       }
    })
-
 })
 
-$("#form-categoria").change(function () {
+$("#form-categoria-filtro").change(function () {
 
    $("#lista").html("");
 
-   var selected = $('#form-categoria option:selected').text();
+   var selected = $('#form-categoria-filtro option:selected').text();
 
    $.ajax({
       url: 'http://localhost:9020/noleggio-veicoli/api/veicoli/categoria/' + selected,
@@ -69,7 +40,6 @@ $("#form-categoria").change(function () {
       success: function (data) {
 
          data.forEach(element => {
-
 
             $("#lista").append(`<div class="col" id="card-` + element.id + `">
                  <img src="https://source.unsplash.com/400x200/?auto" class="img-top" alt="...">
@@ -83,27 +53,101 @@ $("#form-categoria").change(function () {
                  </div>
                </div>`)
 
-            $("#elimina-" + element.id).click(function () {
+            $("#elimina-" + element.id).click({veicolo: element}, eliminaVeicolo);
 
-               $.ajax({
-                  url: 'http://localhost:9020/noleggio-veicoli/api/veicoli/' + element.id,
-                  type: "DELETE",
-                  dataType: "json",
-                  complete: function () {
-
-                     // $("#card-" + element.id).removeClass("card");
-                     $("#card-" + element.id).html("");
-
-                     //document.getElementById("lista").removeChild("#card-" + element.id)
-
-                  }
-               })
-
-            })
+            $("#modifica-" + element.id).click({veicolo: element}, modificaVeicolo);
 
          });
-
       }
    })
-
 })
+
+function eliminaVeicolo(event) {
+   $.ajax({
+      url: 'http://localhost:9020/noleggio-veicoli/api/veicoli/' + event.data.veicolo.id,
+      type: "DELETE",
+      dataType: "json",
+      complete: function () {
+         $("#card-" + event.data.veicolo.id).html("");
+      }
+   })
+}
+
+function modificaVeicolo(event) {
+   switch (event.data.veicolo.categoria) {
+      case "Automobile":
+         $("#form-categoria").val("1");
+         break;
+      case "Monopattino":
+         $("#form-categoria").val("2");
+         break;
+      case "Bicicletta":
+         $("#form-categoria").val("3");
+         break;
+      case "Speciale":
+         $("#form-categoria").val("4");
+         break;
+      default:
+         $("#form-categoria").val("0");
+   }
+
+   switch (event.data.veicolo.alimentazione) {
+      case "Elettrico":
+         $("#btnradio1").attr("checked", true);
+         break;
+
+      case "Hybrid":
+         $("#btnradio2").attr("checked", true);
+         break;
+
+      case "Benzina":
+         $("#btnradio3").attr("checked", true);
+         break;
+
+      case "Diesel":
+         $("#btnradio4").attr("checked", true);
+         break;
+      default:
+         $("#btnradio1").attr("checked", false);
+         $("#btnradio2").attr("checked", false);
+         $("#btnradio3").attr("checked", false);
+         $("#btnradio4").attr("checked", false);
+   }
+
+   $('#form-modello').val(event.data.veicolo.modello);
+   $('#form-colore').val(event.data.veicolo.colore);
+   $('#form-cilindrata').val(event.data.veicolo.cilindrata);
+   $('#form-coordinate').val(event.data.veicolo.posizione);
+
+   $("#form-modifica").submit(function (e) {
+
+      e.preventDefault();
+
+      var modVeicolo = {
+         id: event.data.veicolo.id,
+         categoria: $('#form-categoria option:selected').text(),
+         alimentazione: $('input[name="btnradio"]:checked + label').text(),
+         modello: $('#form-modello').val(),
+         colore: $('#form-colore').val(),
+         cilindrata: $('#form-cilindrata').val(),
+         posizione: $('#form-coordinate').val(),
+         disponibile: true,
+         dataPrenotazione: null,
+         immagineUrl: "https://source.unsplash.com/400x200/?auto"
+      }
+
+      $.ajax({
+         url: 'http://localhost:9020/noleggio-veicoli/api/veicoli',
+         type: "PUT",
+         data: JSON.stringify(modVeicolo),
+         contentType: "application/json",
+         //dataType: "json",
+         success: function () {
+            alert("Veicolo modificato")
+         },
+         error: function () {
+            alert("errore")
+         }
+      })
+   })
+}
