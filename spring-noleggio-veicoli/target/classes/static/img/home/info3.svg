@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="130" height="130" viewBox="0 0 130 130">
+    <defs>
+        <circle id="a" cx="64.972" cy="64.972" r="64.972"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <mask id="b" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="#FFDC00" fill-rule="nonzero" xlink:href="#a"/>
+        <g fill-rule="nonzero" mask="url(#b)">
+            <path fill="#DDE8E5" stroke="#004F8C" stroke-width="3" d="M-9 60.047h151v11H-9z"/>
+            <path fill="#445A64" d="M-10 75.094h155v65H-10z"/>
+            <path fill="#FFF" stroke="#004F8C" stroke-width="3" d="M36.65 74.73h-7.27l-31.101 30.551h13.43l24.94-30.55M102.738 74.73h-7.27l24.924 30.551h13.464l-31.118-30.55"/>
+            <path fill="#809599" stroke="#004F8C" stroke-width="3" d="M-10 69.047h152v6H-10z"/>
+        </g>
+        <g mask="url(#b)">
+            <path fill="#004889" fill-rule="nonzero" d="M97.228 70.38V17.504h-3.783V70.38z"/>
+            <path fill="#72BE41" stroke="#004889" stroke-width="3.226" d="M77.973-17.733h35.155a2.76 2.76 0 0 1 2.76 2.76V40.14a2.76 2.76 0 0 1-2.76 2.76H77.973a2.76 2.76 0 0 1-2.759-2.76v-55.115a2.76 2.76 0 0 1 2.76-2.759z"/>
+            <path stroke="#004889" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.226" d="M81.97 21.51h16.677M103.961 21.51h4.145M82.206 33.16h1.892M81.97 27.334h26.248M88.827 33.16h19.39"/>
+            <path fill="#FFF" d="M111.623 9.962H95.501c-.531-1.244-1.818-2.106-3.33-2.106s-2.8.88-3.33 2.106H82.566l1.635-1.933 7.907-9.61h-7.54v-2.872H98.75l-8.602 10.51h14.058c.184 0 .327.172.327.363 0 .211-.143.364-.327.364h-5.292l-.715.862h9.807c.205 0 .389.153.389.344 0 .211-.163.364-.389.364h-10.4l-.736.88h15.02c-.083.25-.164.498-.267.728zm-16.908 1.802c0 1.446-1.23 2.603-2.723 2.603-1.512 0-2.723-1.176-2.723-2.603 0-1.446 1.23-2.603 2.723-2.603 1.513 0 2.723 1.157 2.723 2.603z"/>
+        </g>
+    </g>
+</svg>
