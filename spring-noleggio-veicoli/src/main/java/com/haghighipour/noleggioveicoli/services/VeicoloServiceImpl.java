@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.util.StringUtils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.haghighipour.noleggioveicoli.entities.Veicolo;
 import com.haghighipour.noleggioveicoli.repository.VeicoloDAO;
 
@@ -17,17 +19,6 @@ public class VeicoloServiceImpl implements VeicoloService {
 
 	@Autowired
 	private VeicoloDAO repo;
-	
-	@Override
-	public void addOne(Veicolo veicolo, MultipartFile file) throws IOException {
-		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		
-		veicolo.setFileName(fileName);
-		veicolo.setFileType(file.getContentType());
-		veicolo.setImmagine(file.getBytes());
-		
-		this.repo.save(veicolo);
-	}
 	
 	@Override
 	public void addOne(Veicolo veicolo) {
@@ -87,6 +78,27 @@ public class VeicoloServiceImpl implements VeicoloService {
 	@Override
 	public void deleteOne(int id) {
 		this.repo.deleteById(id);
+	}
+
+	@Override
+	public Veicolo getJson(String veicolo, MultipartFile immagine) {
+		
+		Veicolo nuovoVeicolo = new Veicolo();
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+		try {
+			nuovoVeicolo = objectMapper.readValue(veicolo, Veicolo.class);
+			String nomeFile = StringUtils.cleanPath(immagine.getOriginalFilename());
+			nuovoVeicolo.setNomeFile(nomeFile);
+			nuovoVeicolo.setTipoFile(immagine.getContentType());
+			nuovoVeicolo.setImmagine(immagine.getBytes());
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return nuovoVeicolo;
 	}
 
 }

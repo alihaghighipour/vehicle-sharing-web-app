@@ -2,7 +2,9 @@ $('#form-inserimento').submit(function (e) {
 
    e.preventDefault();
 
-   var nuovoVeicolo = {
+   const immagine = document.getElementById("immagine").files[0];
+
+   const veicolo = {
       categoria: $('#form-categoria option:selected').text(),
       alimentazione: $('input[name="btnradio"]:checked + label').text(),
       modello: $('#form-modello').val(),
@@ -10,18 +12,20 @@ $('#form-inserimento').submit(function (e) {
       cilindrata: $('#form-cilindrata').val(),
       posizione: $('#form-coordinate').val(),
       disponibile: true,
-      dataPrenotazione: null,
-      immagineUrl: "https://source.unsplash.com/400x200/?auto"
-   }
+      dataPrenotazione: null
+   };
+
+   const formData = new FormData();
+   formData.append("veicolo", JSON.stringify(veicolo));
+   formData.append("immagine", immagine);
 
    $.ajax({
       url: 'http://localhost:9020/noleggio-veicoli/api/veicoli',
       type: 'POST',
-      data: JSON.stringify(nuovoVeicolo),
-      contentType: 'application/json',
-      dataType: 'json',
+      data: formData,
+      processData: false,
+      contentType: false,
       success: function () {
-         //myModal.show()
          $("#demo").removeClass("d-none");
          $('#form-modello').val("");
          $('#form-cilindrata').val("");

@@ -3,6 +3,7 @@ package com.haghighipour.noleggioveicoli.integration;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import com.haghighipour.noleggioveicoli.dto.VeicoloDto;
 import com.haghighipour.noleggioveicoli.entities.Veicolo;
 import com.haghighipour.noleggioveicoli.services.VeicoloService;
 
@@ -30,8 +36,33 @@ public class VeicoloRestController {
 	private VeicoloService veicoloService;
 	
 	@GetMapping("")
-	public List<Veicolo> getVeicoli() {
-		return this.veicoloService.getAll();
+	public List<VeicoloDto> getVeicoli() {
+		List<Veicolo> veicoli = this.veicoloService.getAll();
+		List<VeicoloDto> veicoliDto = veicoli.stream().map(veicolo -> {
+			
+			String immagineDownloadUri = ServletUriComponentsBuilder
+										 .fromCurrentContextPath()
+										 .path("/api/veicoli/")
+										 .path(String.valueOf(veicolo.getId()))
+										 .toUriString();
+			
+			VeicoloDto veicoloDto = new VeicoloDto();
+			veicoloDto.setId(veicolo.getId());
+			veicoloDto.setCategoria(veicolo.getCategoria());
+			veicoloDto.setAlimentazione(veicolo.getAlimentazione());
+			veicoloDto.setModello(veicolo.getModello());
+			veicoloDto.setColore(veicolo.getColore());
+			veicoloDto.setCilindrata(veicolo.getCilindrata());
+			veicoloDto.setPosizione(veicolo.getPosizione());
+			veicoloDto.setNomeFile(veicolo.getNomeFile());
+			veicoloDto.setTipoFile(veicolo.getTipoFile());
+			veicoloDto.setUrlImmagine(immagineDownloadUri);
+			
+			return veicoloDto;
+			
+		}).collect(Collectors.toList());
+		
+		return veicoliDto;
 	}
 	
 	@GetMapping("/{id}")
@@ -64,24 +95,14 @@ public class VeicoloRestController {
 		return this.veicoloService.getAllByDisponibilita(data);
 	}
 	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Veicolo> addVeicolo(@RequestBody Veicolo veicolo) {
-		this.veicoloService.addOne(veicolo);
-		return new ResponseEntity<Veicolo>(veicolo, HttpStatus.CREATED);
-	}
-	
-	@PostMapping("/upload")
-	public ResponseEntity<Veicolo> addVeicolo(Veicolo veicolo, @RequestParam("immagine") MultipartFile file) {
+	@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, 
+							 MediaType.MULTIPART_FORM_DATA_VALUE})
+	public ResponseEntity<Veicolo> addVeicolo(@RequestPart("veicolo") String veicolo,
+											  @RequestPart("immagine") MultipartFile immagine) throws IOException, JsonProcessingException {
 		
-		System.out.println(file);
-		try {
-			this.veicoloService.addOne(veicolo, file);
-			return new ResponseEntity<Veicolo>(veicolo, HttpStatus.CREATED);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-			return new ResponseEntity<Veicolo>(veicolo, HttpStatus.EXPECTATION_FAILED);
-		}
+		Veicolo nuovoVeicolo = this.veicoloService.getJson(veicolo, immagine);
+		this.veicoloService.addOne(nuovoVeicolo);
+		return new ResponseEntity<Veicolo>(nuovoVeicolo, HttpStatus.CREATED);
 	}
 	
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

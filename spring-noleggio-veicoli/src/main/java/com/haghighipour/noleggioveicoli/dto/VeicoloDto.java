@@ -1,22 +1,6 @@
-package com.haghighipour.noleggioveicoli.entities;
+package com.haghighipour.noleggioveicoli.dto;
 
-import java.sql.Date;
-
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "veicoli")
-public class Veicolo {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class VeicoloDto {
 	private int id;
 	private String categoria;
 	private String alimentazione;
@@ -24,17 +8,27 @@ public class Veicolo {
 	private String colore;
 	private int cilindrata;
 	private String posizione;
-	private boolean isDisponibile;
-	private Date dataPrenotazione;
-	
 	private String nomeFile;
 	private String tipoFile;
+	private String urlImmagine;
 	
-	@Lob
-	@Basic(fetch = FetchType.LAZY)
-	private byte[] immagine;
+	public VeicoloDto() {
+		
+	}
 	
-	public Veicolo() {
+	public VeicoloDto(int id, String categoria, String alimentazione, String modello,
+					  String colore, int cilindrata, String posizione, String nomeFile,
+					  String tipoFile, String urlImmagine) {
+		this.id = id;
+		this.categoria = categoria;
+		this.alimentazione = alimentazione;
+		this.modello = modello;
+		this.colore = colore;
+		this.cilindrata = cilindrata;
+		this.posizione = posizione;
+		this.nomeFile = nomeFile;
+		this.tipoFile = tipoFile;
+		this.urlImmagine = urlImmagine;
 	}
 
 	public int getId() {
@@ -48,11 +42,11 @@ public class Veicolo {
 	public String getCategoria() {
 		return categoria;
 	}
-
+	
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-
+	
 	public String getAlimentazione() {
 		return alimentazione;
 	}
@@ -93,22 +87,6 @@ public class Veicolo {
 		this.posizione = posizione;
 	}
 	
-	public boolean isDisponibile() {
-		return isDisponibile;
-	}
-	
-	public void setDisponibile(boolean isDisponibile) {
-		this.isDisponibile = isDisponibile;
-	}
-	
-	public Date getDataPrenotazione() {
-		return dataPrenotazione;
-	}
-	
-	public void setDataPrenotazione(Date dataPrenotazione) {
-		this.dataPrenotazione = dataPrenotazione;
-	}
-	
 	public String getNomeFile() {
 		return nomeFile;
 	}
@@ -125,12 +103,11 @@ public class Veicolo {
 		this.tipoFile = tipoFile;
 	}
 
-	public byte[] getImmagine() {
-		return immagine;
+	public String getUrlImmagine() {
+		return urlImmagine;
 	}
-
-	public void setImmagine(byte[] immagine) {
-		this.immagine = immagine;
+	
+	public void setUrlImmagine(String urlImmagine) {
+		this.urlImmagine = urlImmagine;
 	}
-
 }

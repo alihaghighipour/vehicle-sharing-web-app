@@ -1,6 +1,5 @@
 package com.haghighipour.noleggioveicoli.services;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
@@ -11,8 +10,7 @@ import com.haghighipour.noleggioveicoli.entities.Veicolo;
 
 @Service
 public interface VeicoloService {
-	
-	void addOne(Veicolo veicolo, MultipartFile file) throws IOException;
+
 	void addOne(Veicolo veicolo);
 	List<Veicolo> getAll();
 	Veicolo getOne(int id);
@@ -23,4 +21,6 @@ public interface VeicoloService {
 	List<Veicolo> getAllByDisponibilita(Date data);
 	void updateOne(Veicolo veicolo);
 	void deleteOne(int id);
+	
+	Veicolo getJson(String veicolo, MultipartFile immagine);
 }
