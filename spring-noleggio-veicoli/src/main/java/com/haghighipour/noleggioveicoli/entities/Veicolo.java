@@ -2,14 +2,14 @@ package com.haghighipour.noleggioveicoli.entities;
 
 import java.sql.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.haghighipour.noleggioveicoli.config.CustomProperties;
 
 @Entity
 @Table(name = "veicoli")
@@ -26,13 +26,8 @@ public class Veicolo {
 	private String posizione;
 	private boolean isDisponibile;
 	private Date dataPrenotazione;
-	
 	private String nomeFile;
 	private String tipoFile;
-	
-	@Lob
-	@Basic(fetch = FetchType.LAZY)
-	private byte[] immagine;
 	
 	public Veicolo() {
 	}
@@ -124,13 +119,14 @@ public class Veicolo {
 	public void setTipoFile(String tipoFile) {
 		this.tipoFile = tipoFile;
 	}
-
-	public byte[] getImmagine() {
-		return immagine;
+	
+	@Transient
+	public String getUrlImmagine() {
+		if(this.getNomeFile() == null || this.getNomeFile().equals("")) {
+			return "/" + CustomProperties.defaultImg;
+		}
+		
+		return "/" + CustomProperties.basePath + "/" + this.getId() + "/" + this.getNomeFile();
 	}
-
-	public void setImmagine(byte[] immagine) {
-		this.immagine = immagine;
-	}
-
+	
 }
