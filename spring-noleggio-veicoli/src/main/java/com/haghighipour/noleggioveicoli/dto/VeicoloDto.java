@@ -1,5 +1,7 @@
 package com.haghighipour.noleggioveicoli.dto;
 
+import com.haghighipour.noleggioveicoli.entities.Veicolo;
+
 public class VeicoloDto {
 	private int id;
 	private String categoria;
@@ -16,19 +18,17 @@ public class VeicoloDto {
 		
 	}
 	
-	public VeicoloDto(int id, String categoria, String alimentazione, String modello,
-					  String colore, int cilindrata, String posizione, String nomeFile,
-					  String tipoFile, String urlImmagine) {
-		this.id = id;
-		this.categoria = categoria;
-		this.alimentazione = alimentazione;
-		this.modello = modello;
-		this.colore = colore;
-		this.cilindrata = cilindrata;
-		this.posizione = posizione;
-		this.nomeFile = nomeFile;
-		this.tipoFile = tipoFile;
-		this.urlImmagine = urlImmagine;
+	public VeicoloDto (Veicolo veicolo) {
+		this.id = veicolo.getId();
+		this.categoria = veicolo.getCategoria();
+		this.alimentazione = veicolo.getAlimentazione();
+		this.modello = veicolo.getModello();
+		this.colore = veicolo.getColore();
+		this.cilindrata = veicolo.getCilindrata();
+		this.posizione = veicolo.getPosizione();
+		this.nomeFile = veicolo.getNomeFile();
+		this.tipoFile = veicolo.getTipoFile();
+		this.urlImmagine = veicolo.getUrlImmagine();
 	}
 
 	public int getId() {

@@ -6,9 +6,8 @@ $().ready(function () {
       success: function (data) {
 
          data.forEach(element => {
-
             $("#lista").append(`<div class="col" id="card-` + element.id + `">
-               <img src="https://source.unsplash.com/400x200/?auto" class="img-top" alt="...">
+               <img src="`+ element.urlImmagine +`" class="img-top" alt="...">
                <div class="card-body">
                  <h5 class="title">` + element.modello + `</h5>
                  <p class="text">` + element.cilindrata + `</p>
@@ -42,7 +41,7 @@ $("#form-categoria-filtro").change(function () {
          data.forEach(element => {
 
             $("#lista").append(`<div class="col" id="card-` + element.id + `">
-                 <img src="https://source.unsplash.com/400x200/?auto" class="img-top" alt="...">
+                 <img src="`+ element.urlImmagine +`" class="img-top" alt="...">
                  <div class="card-body">
                    <h5 class="title">` + element.modello + `</h5>
                    <p class="text">` + element.cilindrata + `</p>
@@ -122,8 +121,10 @@ function modificaVeicolo(event) {
    $("#form-modifica").submit(function (e) {
 
       e.preventDefault();
+	  
+	  const immagine = document.getElementById("immagine").files[0];
 
-      var modVeicolo = {
+      var veicolo = {
          id: event.data.veicolo.id,
          categoria: $('#form-categoria option:selected').text(),
          alimentazione: $('input[name="btnradio"]:checked + label').text(),
@@ -132,21 +133,24 @@ function modificaVeicolo(event) {
          cilindrata: $('#form-cilindrata').val(),
          posizione: $('#form-coordinate').val(),
          disponibile: true,
-         dataPrenotazione: null,
-         immagineUrl: "https://source.unsplash.com/400x200/?auto"
+         dataPrenotazione: null
       }
+	  
+	  const formData = new FormData();
+   	  formData.append("veicolo", JSON.stringify(veicolo));
+   	  formData.append("immagine", immagine);
 
       $.ajax({
          url: 'http://localhost:9020/noleggio-veicoli/api/veicoli',
          type: "PUT",
-         data: JSON.stringify(modVeicolo),
-         contentType: "application/json",
-         //dataType: "json",
+         data: formData,
+         processData: false,
+         contentType: false,
          success: function () {
-            alert("Veicolo modificato")
+            alert("Veicolo modificato");
          },
-         error: function () {
-            alert("errore")
+         error: function (e) {
+            alert('Errore' , e);
          }
       })
    })

@@ -35,7 +35,7 @@ $('#form-inserimento').submit(function (e) {
          $('input[name="btnradio"]').checked = false;
       },
       error: function (e) {
-         alert('Error: ' + e);
+         alert('Errore: ' + e);
       }
    })
 })

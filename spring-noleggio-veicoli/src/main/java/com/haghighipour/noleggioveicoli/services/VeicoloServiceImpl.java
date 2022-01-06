@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +27,7 @@ public class VeicoloServiceImpl implements VeicoloService {
 	public Veicolo addVeicoloAndImmagine(Veicolo veicolo, MultipartFile immagine) {
 		Veicolo veicoloSalvato = this.addVeicolo(veicolo);
 				
-		String uploadDir = CustomProperties.basePath + "/" + veicoloSalvato.getId();
+		String uploadDir = CustomProperties.staticResourcesPath + "/" + CustomProperties.baseImgPath + "/" + veicoloSalvato.getId();
 		
 		try {
 			FileUploadUtil.saveFile(uploadDir, veicoloSalvato.getNomeFile(), immagine);
@@ -93,9 +92,9 @@ public class VeicoloServiceImpl implements VeicoloService {
 	public void updateVeicoloAndImmagine(Veicolo veicolo, MultipartFile immagine) {
 		Veicolo veicoloModificato = this.updateVeicolo(veicolo);
 		
-		FileUploadUtil.deleteDirectory(veicoloModificato);
+		//FileUploadUtil.deleteDirectory(veicoloModificato);
 		
-		String uploadDir = CustomProperties.basePath + "/" + veicoloModificato.getId();
+		String uploadDir = CustomProperties.staticResourcesPath + "/" + CustomProperties.baseImgPath + "/" + veicoloModificato.getId();
 		
 		try {
 			FileUploadUtil.saveFile(uploadDir, veicoloModificato.getNomeFile(), immagine);
@@ -140,17 +139,7 @@ public class VeicoloServiceImpl implements VeicoloService {
 	public List<VeicoloDto> getVeicoliDto(List<Veicolo> veicoli) {
 		List<VeicoloDto> veicoliDto = veicoli.stream().map(veicolo -> {
 			
-			VeicoloDto veicoloDto = new VeicoloDto();
-			veicoloDto.setId(veicolo.getId());
-			veicoloDto.setCategoria(veicolo.getCategoria());
-			veicoloDto.setAlimentazione(veicolo.getAlimentazione());
-			veicoloDto.setModello(veicolo.getModello());
-			veicoloDto.setColore(veicolo.getColore());
-			veicoloDto.setCilindrata(veicolo.getCilindrata());
-			veicoloDto.setPosizione(veicolo.getPosizione());
-			veicoloDto.setNomeFile(veicolo.getNomeFile());
-			veicoloDto.setTipoFile(veicolo.getTipoFile());
-			veicoloDto.setUrlImmagine(veicolo.getUrlImmagine());
+			VeicoloDto veicoloDto = new VeicoloDto(veicolo);
 			
 			return veicoloDto;
 			

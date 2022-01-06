@@ -123,10 +123,10 @@ public class Veicolo {
 	@Transient
 	public String getUrlImmagine() {
 		if(this.getNomeFile() == null || this.getNomeFile().equals("")) {
-			return "/" + CustomProperties.defaultImg;
+			return "/" + CustomProperties.defaultImgPath;
 		}
 		
-		return "/" + CustomProperties.basePath + "/" + this.getId() + "/" + this.getNomeFile();
+		return CustomProperties.hostPath + "/" + CustomProperties.baseImgPath + "/" + this.getId() + "/" + this.getNomeFile();
 	}
 	
 }

@@ -37,7 +37,7 @@ public class FileUploadUtil {
 		
 		try {
 			
-			String dir = CustomProperties.basePath + "/" + veicolo.getId();
+			String dir = CustomProperties.staticResourcesPath + CustomProperties.baseImgPath + "/" + veicolo.getId();
 			if(Files.exists(Paths.get(dir))) {
 				FileUtils.deleteDirectory(new File(dir));
 			}
