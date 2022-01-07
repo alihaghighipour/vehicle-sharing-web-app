@@ -13,6 +13,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.haghighipour.noleggioveicoli.config.CustomProperties;
 import com.haghighipour.noleggioveicoli.dto.VeicoloDto;
+import com.haghighipour.noleggioveicoli.entities.AlimentazioneVeicolo;
+import com.haghighipour.noleggioveicoli.entities.CategoriaVeicolo;
 import com.haghighipour.noleggioveicoli.entities.Veicolo;
 import com.haghighipour.noleggioveicoli.repository.VeicoloDAO;
 import com.haghighipour.noleggioveicoli.util.FileUploadUtil;
@@ -54,14 +56,14 @@ public class VeicoloServiceImpl implements VeicoloService {
 	}
 	
 	@Override
-	public List<Veicolo> getVeicoliByCategoria(String categoria) {
+	public List<Veicolo> getVeicoliByCategoria(CategoriaVeicolo categoria) {
 		return this.getVeicoli().stream()
 				   .filter((veicolo) -> veicolo.getCategoria().equals(categoria))
 				   .toList();
 	}
 
 	@Override
-	public List<Veicolo> getVeicoliByAlimentazione(String alimentazione) {
+	public List<Veicolo> getVeicoliByAlimentazione(AlimentazioneVeicolo alimentazione) {
 		return this.getVeicoli().stream()
 				   .filter((veicolo) -> veicolo.getAlimentazione().equals(alimentazione))
 				   .toList();

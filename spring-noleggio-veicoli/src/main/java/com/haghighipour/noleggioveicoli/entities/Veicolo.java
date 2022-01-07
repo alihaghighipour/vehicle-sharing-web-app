@@ -3,6 +3,8 @@ package com.haghighipour.noleggioveicoli.entities;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,8 +20,10 @@ public class Veicolo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String categoria;
-	private String alimentazione;
+	@Enumerated(EnumType.ORDINAL)
+	private CategoriaVeicolo categoria;
+	@Enumerated(EnumType.ORDINAL)
+	private AlimentazioneVeicolo alimentazione;
 	private String modello;
 	private String colore;
 	private int cilindrata;
@@ -40,22 +44,22 @@ public class Veicolo {
 		this.id = id;
 	}
 	
-	public String getCategoria() {
+	public CategoriaVeicolo getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(CategoriaVeicolo categoria) {
 		this.categoria = categoria;
 	}
 
-	public String getAlimentazione() {
+	public AlimentazioneVeicolo getAlimentazione() {
 		return alimentazione;
 	}
-	
-	public void setAlimentazione(String alimentazione) {
+
+	public void setAlimentazione(AlimentazioneVeicolo alimentazione) {
 		this.alimentazione = alimentazione;
 	}
-	
+
 	public String getModello() {
 		return modello;
 	}

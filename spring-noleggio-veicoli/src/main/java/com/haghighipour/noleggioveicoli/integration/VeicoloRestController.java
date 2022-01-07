@@ -22,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.haghighipour.noleggioveicoli.dto.VeicoloDto;
+import com.haghighipour.noleggioveicoli.entities.AlimentazioneVeicolo;
+import com.haghighipour.noleggioveicoli.entities.CategoriaVeicolo;
 import com.haghighipour.noleggioveicoli.entities.Veicolo;
 import com.haghighipour.noleggioveicoli.services.VeicoloService;
 
@@ -46,13 +48,13 @@ public class VeicoloRestController {
 	
 	@GetMapping("/categoria/{categoria}")
 	public List<VeicoloDto> getAllByCategoria(@PathVariable("categoria") final String categoria) {
-		List<Veicolo> veicoli = this.veicoloService.getVeicoliByCategoria(categoria);
+		List<Veicolo> veicoli = this.veicoloService.getVeicoliByCategoria(CategoriaVeicolo.decode(categoria));
 		return this.veicoloService.getVeicoliDto(veicoli);
 	}
 	
 	@GetMapping("/alimentazione/{alimentazione}")
 	public List<VeicoloDto> getAllByAlimentazione(@PathVariable("alimentazione") final String alimentazione) {
-		List<Veicolo> veicoli = this.veicoloService.getVeicoliByAlimentazione(alimentazione);
+		List<Veicolo> veicoli = this.veicoloService.getVeicoliByAlimentazione(AlimentazioneVeicolo.decode(alimentazione));
 		return this.veicoloService.getVeicoliDto(veicoli);
 	}
 	

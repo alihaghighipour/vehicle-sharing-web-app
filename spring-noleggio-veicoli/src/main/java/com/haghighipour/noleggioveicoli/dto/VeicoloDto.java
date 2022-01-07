@@ -1,11 +1,13 @@
 package com.haghighipour.noleggioveicoli.dto;
 
+import com.haghighipour.noleggioveicoli.entities.AlimentazioneVeicolo;
+import com.haghighipour.noleggioveicoli.entities.CategoriaVeicolo;
 import com.haghighipour.noleggioveicoli.entities.Veicolo;
 
 public class VeicoloDto {
 	private int id;
-	private String categoria;
-	private String alimentazione;
+	private CategoriaVeicolo categoria;
+	private AlimentazioneVeicolo alimentazione;
 	private String modello;
 	private String colore;
 	private int cilindrata;
@@ -39,22 +41,22 @@ public class VeicoloDto {
 		this.id = id;
 	}
 	
-	public String getCategoria() {
+	public CategoriaVeicolo getCategoria() {
 		return categoria;
 	}
-	
-	public void setCategoria(String categoria) {
+
+	public void setCategoria(CategoriaVeicolo categoria) {
 		this.categoria = categoria;
 	}
-	
-	public String getAlimentazione() {
+
+	public AlimentazioneVeicolo getAlimentazione() {
 		return alimentazione;
 	}
-	
-	public void setAlimentazione(String alimentazione) {
+
+	public void setAlimentazione(AlimentazioneVeicolo alimentazione) {
 		this.alimentazione = alimentazione;
 	}
-	
+
 	public String getModello() {
 		return modello;
 	}

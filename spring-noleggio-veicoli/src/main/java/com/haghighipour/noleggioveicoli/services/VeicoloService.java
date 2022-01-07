@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.haghighipour.noleggioveicoli.dto.VeicoloDto;
+import com.haghighipour.noleggioveicoli.entities.AlimentazioneVeicolo;
+import com.haghighipour.noleggioveicoli.entities.CategoriaVeicolo;
 import com.haghighipour.noleggioveicoli.entities.Veicolo;
 
 @Service
@@ -16,8 +18,8 @@ public interface VeicoloService {
 	Veicolo addVeicolo(Veicolo veicolo);
 	List<Veicolo> getVeicoli();
 	Veicolo getVeicolo(int id);
-	List<Veicolo> getVeicoliByCategoria(String categoria);
-	List<Veicolo> getVeicoliByAlimentazione(String alimentazione);
+	List<Veicolo> getVeicoliByCategoria(CategoriaVeicolo categoria);
+	List<Veicolo> getVeicoliByAlimentazione(AlimentazioneVeicolo alimentazione);
 	List<Veicolo> getVeicoliByModello(String modello);
 	List<Veicolo> getVeicoliByDisponibilita();
 	List<Veicolo> getVeicoliByDisponibilita(Date data);
