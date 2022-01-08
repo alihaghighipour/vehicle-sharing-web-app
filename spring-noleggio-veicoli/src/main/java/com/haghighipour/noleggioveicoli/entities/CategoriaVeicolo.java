@@ -8,7 +8,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum CategoriaVeicolo {
 	AUTOMOBILE ("Automobile"),
 	MONOPATTINO ("Monopattino"),
-	BICICLETTA ("Bicicletta");
+	BICICLETTA ("Bicicletta"),
+	MOTORINO ("Motorino");
 	
 	private final String categoria;
 	
