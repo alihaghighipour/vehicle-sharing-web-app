@@ -13,7 +13,7 @@ public enum CategoriaVeicolo {
 	
 	private final String categoria;
 	
-	private CategoriaVeicolo(String categoria) {
+	private CategoriaVeicolo(final String categoria) {
 		this.categoria = categoria;
 	}
 	

@@ -3,6 +3,8 @@ package com.haghighipour.noleggioveicoli.entities;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,15 +20,15 @@ public class Utente {
 	private String username;
 	private String password;
 	private String firma;
-	private String tipoUtente;
+	@Enumerated(EnumType.ORDINAL)
+	private RuoloUtente ruolo;
 	private String nome;
 	private String cognome;
 	private Date dataNascita;
 	private String email;
 	private Date dataIscrizione;
+	private String token;
 	
-	//to do : date, nullable su colonne
-
 	public int getId() {
 		return id;
 	}
@@ -59,14 +61,14 @@ public class Utente {
 		this.firma = firma;
 	}
 	
-	public String getTipoUtente() {
-		return tipoUtente;
+	public RuoloUtente getRuolo() {
+		return ruolo;
 	}
-	
-	public void setTipoUtente(String tipoUtente) {
-		this.tipoUtente = tipoUtente;
+
+	public void setRuolo(RuoloUtente ruolo) {
+		this.ruolo = ruolo;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -107,4 +109,11 @@ public class Utente {
 		this.dataIscrizione = dataIscrizione;
 	}
 	
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
 }
