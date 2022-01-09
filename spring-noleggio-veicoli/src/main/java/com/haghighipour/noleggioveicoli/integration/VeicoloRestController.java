@@ -51,6 +51,12 @@ public class VeicoloRestController {
 		return new VeicoloDto(veicolo);
 	}
 	
+	@GetMapping("/random")
+	public List<VeicoloDto> getRandom(@RequestParam("random") final int random) {
+		List<Veicolo> veicoli = this.veicoloService.getRandomVeicoli(random);
+		return this.veicoloService.getVeicoliDto(veicoli);
+	}
+	
 	@GetMapping("/categoria/{categoria}")
 	public List<VeicoloDto> getAllByCategoria(@PathVariable("categoria") final String categoria) {
 		List<Veicolo> veicoli = this.veicoloService.getVeicoliByCategoria(CategoriaVeicolo.decode(categoria));

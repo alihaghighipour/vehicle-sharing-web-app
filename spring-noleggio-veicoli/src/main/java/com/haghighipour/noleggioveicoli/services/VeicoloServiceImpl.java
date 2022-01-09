@@ -3,6 +3,7 @@ package com.haghighipour.noleggioveicoli.services;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -81,6 +82,13 @@ public class VeicoloServiceImpl implements VeicoloService {
 	}
 	
 	@Override
+	public List<Veicolo> getRandomVeicoli(int random) {
+		List<Veicolo> tmpVeicoli = new ArrayList<Veicolo>(this.veicoli.values().stream().toList());
+		Collections.shuffle(tmpVeicoli);
+		return random > tmpVeicoli.size() ? tmpVeicoli.subList(0, tmpVeicoli.size()) : tmpVeicoli.subList(0, random);
+	}
+	
+	@Override
 	public List<Veicolo> getVeicoliByCategoria(CategoriaVeicolo categoria) {
 		return this.veicoli.values().stream()
 				   .filter((veicolo) -> veicolo.getCategoria().equals(categoria))
@@ -125,20 +133,27 @@ public class VeicoloServiceImpl implements VeicoloService {
 		final double FATTORE_AUTO_ELETTRICA = 0.6;
 		final double FATTORE_AUTO_IBRIDA = 0.4;
 		
-		final int numeroBiciclette = Math.toIntExact(this.veicoli.values().stream()
-										 				 .filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.BICICLETTA))
-										 				 .count());
+		final int numeroBiciclette = Math.toIntExact(
+									 this.veicoli.values().stream()
+										 .filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.BICICLETTA))
+										 .count());
 		
-		final int numeroMonopattini = Math.toIntExact(this.veicoli.values().stream()
-				 										  .filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.MONOPATTINO))
-				 										  .count());
+		final int numeroMonopattini = Math.toIntExact(
+									  this.veicoli.values().stream()
+				 						  .filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.MONOPATTINO))
+				 						  .count());
 	
-		final int numeroAutoElettriche = Math.toIntExact(this.veicoli.values().stream()
-															.filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.AUTOMOBILE) && veicolo.getAlimentazione().equals(AlimentazioneVeicolo.ELETTRICO))
-															.count());
-		final int numeroAutoIbride = Math.toIntExact(this.veicoli.values().stream()
-															.filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.AUTOMOBILE) && veicolo.getAlimentazione().equals(AlimentazioneVeicolo.IBRIDO))
-															.count());
+		final int numeroAutoElettriche = Math.toIntExact(
+										 this.veicoli.values().stream()
+						 					 .filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.AUTOMOBILE) &&
+						 							 			  veicolo.getAlimentazione().equals(AlimentazioneVeicolo.ELETTRICO))
+											 .count());
+		
+		final int numeroAutoIbride = Math.toIntExact(
+									 this.veicoli.values().stream()
+										 .filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.AUTOMOBILE) &&
+												 			  veicolo.getAlimentazione().equals(AlimentazioneVeicolo.IBRIDO))
+										 .count());
 	
 		statistica.add(new StatisticaDto("Biciclette", FATTORE_BICICLETTA * numeroBiciclette));
 		statistica.add(new StatisticaDto("Monopattini", FATTORE_MONOPATTINO * numeroMonopattini));

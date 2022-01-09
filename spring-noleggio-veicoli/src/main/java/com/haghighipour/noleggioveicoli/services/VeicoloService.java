@@ -19,6 +19,7 @@ public interface VeicoloService {
 	Veicolo addVeicolo(Veicolo veicolo);
 	List<Veicolo> getVeicoli();
 	Veicolo getVeicolo(int id);
+	List<Veicolo> getRandomVeicoli(int random);
 	List<Veicolo> getVeicoliByCategoria(CategoriaVeicolo categoria);
 	List<Veicolo> getVeicoliByAlimentazione(AlimentazioneVeicolo alimentazione);
 	List<Veicolo> getVeicoliByModello(String modello);
