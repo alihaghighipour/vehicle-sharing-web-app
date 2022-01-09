@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-
+import com.haghighipour.noleggioveicoli.dto.StatisticaDto;
 import com.haghighipour.noleggioveicoli.dto.VeicoloDto;
 import com.haghighipour.noleggioveicoli.entities.AlimentazioneVeicolo;
 import com.haghighipour.noleggioveicoli.entities.CategoriaVeicolo;
@@ -79,6 +79,11 @@ public class VeicoloRestController {
 	public List<VeicoloDto> getAllByDisponibilita(@RequestParam("data") final Date data) {
 		List<Veicolo> veicoli = this.veicoloService.getVeicoliByDisponibilita(data);
 		return this.veicoloService.getVeicoliDto(veicoli);
+	}
+	
+	@GetMapping("/statistica")
+	public List<StatisticaDto> getStatistica() {
+		return this.veicoloService.getStatisticaVeicoli();
 	}
 	
 	@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, 

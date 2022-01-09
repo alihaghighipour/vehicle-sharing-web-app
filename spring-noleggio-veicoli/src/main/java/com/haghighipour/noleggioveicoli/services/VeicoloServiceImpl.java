@@ -2,6 +2,7 @@ package com.haghighipour.noleggioveicoli.services;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +19,7 @@ import org.springframework.util.StringUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.haghighipour.noleggioveicoli.config.CustomProperties;
+import com.haghighipour.noleggioveicoli.dto.StatisticaDto;
 import com.haghighipour.noleggioveicoli.dto.VeicoloDto;
 import com.haghighipour.noleggioveicoli.entities.AlimentazioneVeicolo;
 import com.haghighipour.noleggioveicoli.entities.CategoriaVeicolo;
@@ -115,6 +117,38 @@ public class VeicoloServiceImpl implements VeicoloService {
 	}
 	
 	@Override
+	public List<StatisticaDto> getStatisticaVeicoli() {
+		List<StatisticaDto> statistica = new ArrayList<StatisticaDto>();
+		
+		final double FATTORE_BICICLETTA = 1.0;
+		final double FATTORE_MONOPATTINO = 0.95;
+		final double FATTORE_AUTO_ELETTRICA = 0.6;
+		final double FATTORE_AUTO_IBRIDA = 0.4;
+		
+		final int numeroBiciclette = Math.toIntExact(this.veicoli.values().stream()
+										 				 .filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.BICICLETTA))
+										 				 .count());
+		
+		final int numeroMonopattini = Math.toIntExact(this.veicoli.values().stream()
+				 										  .filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.MONOPATTINO))
+				 										  .count());
+	
+		final int numeroAutoElettriche = Math.toIntExact(this.veicoli.values().stream()
+															.filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.AUTOMOBILE) && veicolo.getAlimentazione().equals(AlimentazioneVeicolo.ELETTRICO))
+															.count());
+		final int numeroAutoIbride = Math.toIntExact(this.veicoli.values().stream()
+															.filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.AUTOMOBILE) && veicolo.getAlimentazione().equals(AlimentazioneVeicolo.IBRIDO))
+															.count());
+	
+		statistica.add(new StatisticaDto("Biciclette", FATTORE_BICICLETTA * numeroBiciclette));
+		statistica.add(new StatisticaDto("Monopattini", FATTORE_MONOPATTINO * numeroMonopattini));
+		statistica.add(new StatisticaDto("Auto Elettriche", FATTORE_AUTO_ELETTRICA * numeroAutoElettriche));
+		statistica.add(new StatisticaDto("Auto Ibride", FATTORE_AUTO_IBRIDA * numeroAutoIbride));
+		
+		return statistica;
+	}
+
+	@Override
 	public void updateVeicoloAndImmagine(Veicolo veicolo, MultipartFile immagine) {
 		Veicolo veicoloModificato = this.updateVeicolo(veicolo);
 		
@@ -175,5 +209,4 @@ public class VeicoloServiceImpl implements VeicoloService {
 		}).collect(Collectors.toList());
 		return veicoliDto;
 	}
-
 }

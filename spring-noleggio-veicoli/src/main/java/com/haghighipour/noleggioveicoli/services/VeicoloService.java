@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.haghighipour.noleggioveicoli.dto.StatisticaDto;
 import com.haghighipour.noleggioveicoli.dto.VeicoloDto;
 import com.haghighipour.noleggioveicoli.entities.AlimentazioneVeicolo;
 import com.haghighipour.noleggioveicoli.entities.CategoriaVeicolo;
@@ -23,6 +24,7 @@ public interface VeicoloService {
 	List<Veicolo> getVeicoliByModello(String modello);
 	List<Veicolo> getVeicoliByDisponibilita();
 	List<Veicolo> getVeicoliByDisponibilita(Date data);
+	List<StatisticaDto> getStatisticaVeicoli();
 	void updateVeicoloAndImmagine(Veicolo veicolo, MultipartFile immagine);
 	Veicolo updateVeicolo(Veicolo veicolo);
 	void deleteVeicolo(int id);
