@@ -43,6 +43,11 @@ public class VeicoloRestController {
 	@GetMapping("/{id}")
 	public VeicoloDto getOneById(@PathVariable("id") final int id) {
 		Veicolo veicolo = this.veicoloService.getVeicolo(id);
+		
+		if (veicolo == null) {
+			return new VeicoloDto();
+		}
+		
 		return new VeicoloDto(veicolo);
 	}
 	

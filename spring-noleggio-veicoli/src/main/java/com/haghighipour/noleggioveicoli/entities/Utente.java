@@ -29,6 +29,43 @@ public class Utente {
 	private Date dataIscrizione;
 	private String token;
 	
+	public Utente() {
+		
+	}
+	
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 * @param firma
+	 * @param ruolo
+	 * @param nome
+	 * @param cognome
+	 * @param dataNascita
+	 * @param email
+	 * @param dataIscrizione
+	 */
+	public Utente(String username,
+				  String password,
+				  String firma,
+				  RuoloUtente ruolo,
+				  String nome,
+				  String cognome,
+				  Date dataNascita,
+				  String email,
+				  Date dataIscrizione) {
+		
+		this.username = username;
+		this.password = password;
+		this.firma = firma;
+		this.ruolo = ruolo;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataNascita = dataNascita;
+		this.email = email;
+		this.dataIscrizione = dataIscrizione;
+	}
+
 	public int getId() {
 		return id;
 	}

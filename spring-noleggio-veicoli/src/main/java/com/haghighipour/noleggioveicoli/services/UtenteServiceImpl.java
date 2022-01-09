@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.haghighipour.noleggioveicoli.entities.RuoloUtente;
 import com.haghighipour.noleggioveicoli.entities.Utente;
 import com.haghighipour.noleggioveicoli.repository.UtenteDAO;
 import com.haghighipour.noleggioveicoli.util.TokenGeneratorUtil;
@@ -14,22 +15,33 @@ public class UtenteServiceImpl implements UtenteService {
 
 	@Autowired
 	private UtenteDAO repo;
-	
+
 	@Override
-	public void addUtente(Utente utente) {
-		this.repo.save(utente);
+	public Utente loginUtenteWithUsernameAndPassword(final String username, final String password) {
+		Utente utente = this.repo.findByUsernameAndPassword(username, password);
+		
+		if (utente != null) {
+			utente.setToken(TokenGeneratorUtil.generateNewToken());
+			this.updateUtente(utente);
+		}
+		
+		return utente;
 	}
 
 	@Override
-	public Utente getUtenteByUsernameAndPassword(final String username, final String password) {
-		Utente utente = this.repo.findByUsernameAndPassword(username, password).get();
+	public Utente authorizeUtenteWithTokenAndRuolo(final String token, final RuoloUtente ruolo) {
+		return this.repo.findByTokenAndRuolo(token, ruolo);
+	}
+
+	@Override
+	public Utente logoutUtenteWithToken(final String token) {
+		Utente utente = this.repo.findByToken(token);
 		
-		if (utente == null) {
-			throw new IllegalStateException("Utente non esiste!");
+		if (utente != null) {
+			utente.setToken(null);
+			this.updateUtente(utente);
 		}
 		
-		utente.setToken(TokenGeneratorUtil.generateNewToken());
-		this.updateUtente(utente);
 		return utente;
 	}
 
@@ -42,5 +54,4 @@ public class UtenteServiceImpl implements UtenteService {
 	public void updateUtente(Utente utente) {
 		this.repo.save(utente);
 	}
-
 }

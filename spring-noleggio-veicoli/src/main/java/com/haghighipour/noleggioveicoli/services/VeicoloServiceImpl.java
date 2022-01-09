@@ -2,8 +2,14 @@ package com.haghighipour.noleggioveicoli.services;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +31,21 @@ public class VeicoloServiceImpl implements VeicoloService {
 	@Autowired
 	private VeicoloDAO repo;
 	
+	private Map<Integer, Veicolo> veicoli = new HashMap<Integer, Veicolo>();
+	
+	@PostConstruct
+	private void init() {
+		List<Veicolo> elencoVeicoli = this.repo.findAll();
+		
+		if (elencoVeicoli == null) {
+			return;
+		}
+		
+		for (Veicolo veicolo: elencoVeicoli) {
+			this.veicoli.put(veicolo.getId(), veicolo);
+		}
+	}
+	
 	@Override
 	public Veicolo addVeicoloAndImmagine(Veicolo veicolo, MultipartFile immagine) {
 		Veicolo veicoloSalvato = this.addVeicolo(veicolo);
@@ -42,50 +63,53 @@ public class VeicoloServiceImpl implements VeicoloService {
 	
 	@Override
 	public Veicolo addVeicolo(Veicolo veicolo) {
-		return this.repo.save(veicolo);
+		Veicolo veicoloSalvato =  this.repo.save(veicolo);
+		this.veicoli.put(veicoloSalvato.getId(), veicoloSalvato);
+		return veicoloSalvato;
 	}
 	
 	@Override
 	public List<Veicolo> getVeicoli() {
-		return this.repo.findAll();
+		return this.veicoli.values().stream().toList();
 	}
 
 	@Override
 	public Veicolo getVeicolo(int id) {
-		return this.repo.findById(id).get();
+		return this.veicoli.get(id);
 	}
 	
 	@Override
 	public List<Veicolo> getVeicoliByCategoria(CategoriaVeicolo categoria) {
-		return this.getVeicoli().stream()
+		return this.veicoli.values().stream()
 				   .filter((veicolo) -> veicolo.getCategoria().equals(categoria))
+				   .sorted(Comparator.comparing(Veicolo::getModello))
 				   .toList();
 	}
 
 	@Override
 	public List<Veicolo> getVeicoliByAlimentazione(AlimentazioneVeicolo alimentazione) {
-		return this.getVeicoli().stream()
+		return this.veicoli.values().stream()
 				   .filter((veicolo) -> veicolo.getAlimentazione().equals(alimentazione))
 				   .toList();
 	}
 
 	@Override
 	public List<Veicolo> getVeicoliByModello(String modello) {
-		return this.getVeicoli().stream()
+		return this.veicoli.values().stream()
 				   .filter((veicolo) -> veicolo.getModello().equals(modello))
 				   .toList();
 	}
 	
 	@Override
 	public List<Veicolo> getVeicoliByDisponibilita() {
-		return this.getVeicoli().stream()
+		return this.veicoli.values().stream()
 				   .filter((veicolo) -> veicolo.isDisponibile())
 				   .toList();
 	}
 
 	@Override
 	public List<Veicolo> getVeicoliByDisponibilita(Date data) {
-		return this.getVeicoli().stream()
+		return this.veicoli.values().stream()
 				   .filter((veicolo) -> veicolo.getDataPrenotazione() == null || !veicolo.getDataPrenotazione().equals(data))
 				   .toList();
 	}
@@ -107,12 +131,15 @@ public class VeicoloServiceImpl implements VeicoloService {
 	
 	@Override
 	public Veicolo updateVeicolo(Veicolo veicolo) {
-		return this.repo.save(veicolo);
+		Veicolo veicoloModificato = this.repo.save(veicolo);
+		this.veicoli.put(veicoloModificato.getId(), veicoloModificato);
+		return veicoloModificato;
 	}
 
 	@Override
 	public void deleteVeicolo(int id) {
 		FileUploadUtil.deleteDirectory(this.getVeicolo(id));
+		this.veicoli.remove(id);
 		this.repo.deleteById(id);
 	}
 
