@@ -1,7 +1,5 @@
 package com.haghighipour.noleggioveicoli.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,11 +41,6 @@ public class UtenteServiceImpl implements UtenteService {
 		}
 		
 		return utente;
-	}
-
-	@Override
-	public List<Utente> getUtenti() {
-		return this.repo.findAll();
 	}
 
 	@Override

@@ -2,12 +2,14 @@ package com.haghighipour.noleggioveicoli.entities;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -24,6 +26,9 @@ public class Veicolo {
 	private CategoriaVeicolo categoria;
 	@Enumerated(EnumType.ORDINAL)
 	private AlimentazioneVeicolo alimentazione;
+	@Lob
+	@Column(length = 512)
+	private String descrizione;
 	private String modello;
 	private String colore;
 	private int cilindrata;
@@ -58,6 +63,14 @@ public class Veicolo {
 
 	public void setAlimentazione(AlimentazioneVeicolo alimentazione) {
 		this.alimentazione = alimentazione;
+	}
+	
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 	public String getModello() {

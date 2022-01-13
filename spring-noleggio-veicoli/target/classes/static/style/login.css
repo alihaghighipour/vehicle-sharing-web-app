@@ -1,24 +1,28 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
 .logo {
-   width: 80px;
-   margin: auto;
-   margin-top: 2rem;
+    width: 100px;
+    margin: auto;
+    margin-top: 2rem;
 }
 
 .logo img {
-   max-width: 100%;
+    max-width: 100%;
 }
 
 .form-container {
-   max-width: 500px;
-   margin: auto;
-   margin-top: 5rem;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 5rem;
 }
 
 .form-container h2 {
-   margin-bottom: 3rem;
-   text-align: center;
+    margin-bottom: 3rem;
+    text-align: center;
 }
 
 .form-container button {
-   background-color: green
+    background-color:#9ccd76f3;
 }

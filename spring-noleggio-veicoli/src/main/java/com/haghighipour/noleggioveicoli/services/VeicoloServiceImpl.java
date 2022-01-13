@@ -118,12 +118,16 @@ public class VeicoloServiceImpl implements VeicoloService {
 	}
 
 	@Override
-	public List<Veicolo> getVeicoliByDisponibilita(Date data) {
-		return this.veicoli.values().stream()
-				   .filter((veicolo) -> veicolo.getDataPrenotazione() == null || !veicolo.getDataPrenotazione().equals(data))
-				   .toList();
+	public Veicolo getVeicoloByDisponibilita(int id) {
+		Veicolo veicolo = this.veicoli.get(id);
+		
+		if (veicolo != null) {
+			return veicolo.isDisponibile() ? veicolo : null;
+		}
+		
+		return veicolo;
 	}
-	
+
 	@Override
 	public List<StatisticaDto> getStatisticaVeicoli() {
 		List<StatisticaDto> statistica = new ArrayList<StatisticaDto>();
@@ -152,7 +156,7 @@ public class VeicoloServiceImpl implements VeicoloService {
 		final int numeroAutoIbride = Math.toIntExact(
 									 this.veicoli.values().stream()
 										 .filter((veicolo) -> veicolo.getCategoria().equals(CategoriaVeicolo.AUTOMOBILE) &&
-												 			  veicolo.getAlimentazione().equals(AlimentazioneVeicolo.IBRIDO))
+												 			  veicolo.getAlimentazione().equals(AlimentazioneVeicolo.HYBRID))
 										 .count());
 	
 		statistica.add(new StatisticaDto("Biciclette", FATTORE_BICICLETTA * numeroBiciclette));
@@ -162,7 +166,14 @@ public class VeicoloServiceImpl implements VeicoloService {
 		
 		return statistica;
 	}
-
+	
+	@Override
+	public void updateDisponibilita(Veicolo veicolo) {
+		veicolo.setDisponibile(false);
+		veicolo.setDataPrenotazione(new Date(System.currentTimeMillis()));
+		this.updateVeicolo(veicolo);
+	}
+	
 	@Override
 	public void updateVeicoloAndImmagine(Veicolo veicolo, MultipartFile immagine) {
 		Veicolo veicoloModificato = this.updateVeicolo(veicolo);
@@ -224,4 +235,5 @@ public class VeicoloServiceImpl implements VeicoloService {
 		}).collect(Collectors.toList());
 		return veicoliDto;
 	}
+
 }

@@ -1,0 +1,80 @@
+body {
+   background-color: #F5F5F5;
+   font-family: 'Poppins', sans-serif;
+}
+
+img {
+   max-width: 100%;
+   height: auto;
+}
+
+.logoAdmin {
+   width: 90px;
+   margin: auto;
+}
+
+.logoAdmin img {
+   max-width: 100%;
+}
+
+.form-container {
+   max-width: 500px;
+   margin: auto;
+   margin-top: 5rem;
+}
+
+.form-container h2 {
+   margin-bottom: 3rem;
+   text-align: center;
+}
+
+.margin {
+   height: 126px;
+   background-color: #9ccd76;
+}
+
+.tipo {
+   display: flex;
+   justify-content: space-around;
+}
+
+.hamburger {
+   color: white;
+}
+
+.btnLogin {
+   background-color: greenyellow;
+}
+
+.btn-submit {
+   background-color: #9ccd76f3;
+}
+
+.navbar {
+   background-color: #9ccd76f3;
+}
+
+.nav-link {
+   color: honeydew;
+}
+
+.nav-link:hover {
+   color: black;
+}
+
+button {
+   background-color: rgb(58, 0, 165)
+}
+
+.footer {
+   background-color: rgb(155, 205, 118);
+   height: 126px;
+   width: 100%;
+   text-align: center;
+   padding: 3rem;
+   margin-top: 3rem;
+}
+
+.footer p {
+   margin: 0px;
+}

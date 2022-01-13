@@ -1,7 +1,6 @@
 package com.haghighipour.noleggioveicoli.integration;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,16 +80,22 @@ public class VeicoloRestController {
 		return this.veicoloService.getVeicoliDto(veicoli);
 	}
 	
-	@GetMapping("/disponibili/data")
-	public List<VeicoloDto> getAllByDisponibilita(@RequestParam("data") final Date data) {
-		List<Veicolo> veicoli = this.veicoloService.getVeicoliByDisponibilita(data);
-		return this.veicoloService.getVeicoliDto(veicoli);
-	}
-	
 	@GetMapping("/statistica")
 	public List<StatisticaDto> getStatistica() {
 		return this.veicoloService.getStatisticaVeicoli();
 	}
+	
+	@PostMapping("/prenota")
+	public ResponseEntity<?> prenota(@RequestParam("id") final int id) {
+		Veicolo veicolo = this.veicoloService.getVeicoloByDisponibilita(id);
+		
+		if (veicolo == null) {
+			return ResponseEntity.badRequest().build();
+		}
+		
+		this.veicoloService.updateDisponibilita(veicolo);
+		return ResponseEntity.ok().build();
+	} 
 	
 	@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, 
 							 MediaType.MULTIPART_FORM_DATA_VALUE})

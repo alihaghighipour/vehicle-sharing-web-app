@@ -8,6 +8,7 @@ public class VeicoloDto {
 	private int id;
 	private CategoriaVeicolo categoria;
 	private AlimentazioneVeicolo alimentazione;
+	private String descrizione;
 	private String modello;
 	private String colore;
 	private int cilindrata;
@@ -24,6 +25,7 @@ public class VeicoloDto {
 		this.id = veicolo.getId();
 		this.categoria = veicolo.getCategoria();
 		this.alimentazione = veicolo.getAlimentazione();
+		this.descrizione = veicolo.getDescrizione();
 		this.modello = veicolo.getModello();
 		this.colore = veicolo.getColore();
 		this.cilindrata = veicolo.getCilindrata();
@@ -55,6 +57,14 @@ public class VeicoloDto {
 
 	public void setAlimentazione(AlimentazioneVeicolo alimentazione) {
 		this.alimentazione = alimentazione;
+	}
+	
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 	public String getModello() {

@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum AlimentazioneVeicolo {
 	ELETTRICO ("Elettrico"),
-	IBRIDO ("Ibrido"),
+	HYBRID ("Hybrid"),
 	BENZINA ("Benzina"),
-	DIESEL ("Diesel");
+	DIESEL ("Diesel"),
+	NON_MOTORIZZATO ("Non motorizzato");
 	
 	private final String alimentazione;
 	

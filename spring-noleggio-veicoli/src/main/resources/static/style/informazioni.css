@@ -1,0 +1,67 @@
+body {
+   background-color: #F5F5F5;
+   font-family: 'Poppins', sans-serif;
+}
+
+img {
+   max-width: 100%;
+   height: auto;
+}
+
+.margin {
+   height: 126px;
+   background-color: #9ccd76;
+}
+
+.hamburger {
+   color: white;
+}
+
+.btnLogin {
+   background-color: greenyellow;
+}
+
+.navbar {
+   background-color: #9ccd76f3;
+}
+
+.nav-link {
+   color: honeydew;
+}
+
+.nav-link:hover {
+   color: black;
+}
+
+.header {
+   margin-top: 5rem;
+   margin-bottom: 5rem;
+}
+
+.noi {
+   vertical-align: middle;
+}
+
+.chart {
+   width: 90%;
+}
+
+.sfondoGrafico {
+   background-image: url(../img/informazioni/sfondo4.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   padding: 2rem;
+}
+
+.footer {
+   background-color: #96D17D;
+   height: 126px;
+   width: 100%;
+   text-align: center;
+   padding: 3rem;
+}
+
+.footer p {
+   margin: 0px;
+}

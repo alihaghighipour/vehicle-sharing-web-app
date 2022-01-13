@@ -1,6 +1,5 @@
 package com.haghighipour.noleggioveicoli.services;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -24,8 +23,9 @@ public interface VeicoloService {
 	List<Veicolo> getVeicoliByAlimentazione(AlimentazioneVeicolo alimentazione);
 	List<Veicolo> getVeicoliByModello(String modello);
 	List<Veicolo> getVeicoliByDisponibilita();
-	List<Veicolo> getVeicoliByDisponibilita(Date data);
+	Veicolo getVeicoloByDisponibilita(int id);
 	List<StatisticaDto> getStatisticaVeicoli();
+	void updateDisponibilita(Veicolo veicolo);
 	void updateVeicoloAndImmagine(Veicolo veicolo, MultipartFile immagine);
 	Veicolo updateVeicolo(Veicolo veicolo);
 	void deleteVeicolo(int id);

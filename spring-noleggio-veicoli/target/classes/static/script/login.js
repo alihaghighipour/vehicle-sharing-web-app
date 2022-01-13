@@ -17,10 +17,13 @@ $('#form-login').submit(function(e) {
 		contentType: false,
 		dataType: 'json',
 		success: function(utente){
-			console.log(utente);
+			if (Modernizr.localstorage) {
+				localStorage.setItem("utente", JSON.stringify(utente));
+				window.location.href = "home.html";
+			}
 		},
-		error: function(e) {
-			alert('Errore' + e);
+		error: function() {
+			alert('Utente non trovato!');
 		}		
 	})
 })

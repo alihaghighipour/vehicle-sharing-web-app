@@ -23,5 +23,4 @@ public class DataLoader implements CommandLineRunner {
 		this.repo.save(new Utente("admin", "admin", "Amministratore dei servizi", RuoloUtente.ADMIN, "Paolino", "Paperino", Date.valueOf("1990-08-20"), "paolino.paperino@paperopoli.com", new Date(System.currentTimeMillis())));
 		this.repo.save(new Utente("utente", "utente", "Utente con diritti minimi", RuoloUtente.UTENTE, "Pippo", "foo", Date.valueOf("1996-08-18"), "pippo.foo@paperopoli.com", new Date(System.currentTimeMillis())));
 	}
-
 }

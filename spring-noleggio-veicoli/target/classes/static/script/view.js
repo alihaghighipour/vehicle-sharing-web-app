@@ -12,7 +12,7 @@ $().ready(function () {
                  <h5 class="title">` + element.modello + `</h5>
                  <p class="text">` + element.cilindrata + `</p>
                  <p class="text">` + element.colore + `</p>
-                 <a href="http://localhost:9020/noleggio-veicoli/api/veicoli/` + element.id + `" class="btn btn-success">View more</a>
+                 <button href="http://localhost:9020/noleggio-veicoli/api/veicoli/` + element.id + `" class="btn btn-success">View more</a>
                  <button id="modifica-` + element.id + `" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifica</i></button>  
                  <button id="elimina-` + element.id + `" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>               
                </div>

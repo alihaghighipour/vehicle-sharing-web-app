@@ -1,0 +1,80 @@
+body {
+   background-color: #F5F5F5;
+}
+
+img {
+   max-width: 100%;
+   height: auto;
+}
+
+.margin {
+   height: 126px;
+   background-color: #9ccd76;
+}
+
+.banner {
+   text-align: center;
+}
+
+.hamburger {
+   color: white;
+}
+
+.btnLogin {
+   background-color: greenyellow;
+}
+
+.navbar {
+   background-color: rgba(156, 205, 118, 0.931);
+}
+
+.nav-link {
+   color: honeydew;
+}
+
+.nav-link:hover {
+   color: black;
+}
+
+.veicolo {
+   margin-top: 5rem;
+   padding-top: 4rem;
+   padding-bottom: 4rem;
+   background-color: white;
+   border-radius: 20px;
+}
+
+.immagineV img {
+   padding: 1.5rem;
+}
+
+.tabella i {
+   background-color: rgb(155, 205, 118);
+   color: white;
+   padding: 0.5rem;
+   border-radius: 50%;
+}
+
+.tabella td {
+   width: 60%;
+}
+
+#map {
+   height: 500px;
+   width: 90%;
+   margin: auto;
+   margin-top: 2rem;
+   border-radius: 20px;
+}
+
+.footer {
+   background-color: rgb(155, 205, 118);
+   height: 126px;
+   width: 100%;
+   text-align: center;
+   padding: 3rem;
+}
+
+.footer p {
+   margin: 0px;
+}

@@ -8,6 +8,10 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+   <link rel="icon" href="img/home/loghi/logo_verde.png" type="image/icon type">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="style/home.css">
 
    <title>Home</title>
@@ -23,76 +27,110 @@
       <nav class="navbar navbar-expand-lg fixed-top">
          <div class=" container">
             <a class="navbar-brand" href="#">
-               <img src="img/home/loghi/logo_provvisorio.png" width=100px height="auto" alt="">
+               <img src="img/home/loghi/logo_bianco.png" width=100px height="auto" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                <i class="hamburger fa fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-               <div class="navbar-nav ms-auto">
-                  <a class="nav-link" aria-current="page" href="#">Home</a>
-                  <a class="nav-link" href="#">Su di Noi</a>
-                  <a class="nav-link" href="#">Prenota</a>
-                  <a class="nav-link" href="#">I Nostri mezzi</a>
-                  <a class="nav-link" href="#">Contatti</a>
-                  <button type="button" class="btnLogin btn rounded-pill">Login</button>
+               <div class="navbar-nav ms-auto" id="links">
+                  <a class="nav-link mx-1" aria-current="page" href="home.html">Home</a>
+                  <a class="nav-link mx-1" href="informazioni.html">Chi siamo</a>
+                  <a class="nav-link mx-1" href="view-utente.html" id="view">I Nostri mezzi</a>
+                  <a class="nav-link mx-1" href="#footer">Contatti</a>
+                  <form action="login.html" id="login">
+                     <button type="submit" class="btnLogin btn rounded-pill mx-1">Login</button>
+                  </form>
+                  <button class="btnLogin btn rounded-pill mx-1 d-none" id="logout">Logout</button>
                </div>
             </div>
          </div>
       </nav>
    </div>
 
-   <div class="banner">
+   <div id="hero">
       <img src="img/home/banner.png" alt="">
+      <div class="testo-hero">
+         <h1>NoleJato</h1>
+         <h3>Trova il mezzo piu` vicino per muoverti a Torino!</h3>
+      </div>
+   </div>
+
+   <div class="testo">
+      <h1>Semplice e veloce!</h1>
    </div>
 
    <div class="container info">
 
       <div class="row servizi">
          <div class="col-lg-4">
-            <img src="https://source.unsplash.com/300x300/?mobile" alt="">
+            <img src="img/home/loghi/cell.png" alt="">
             <h3>Registrati</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A consequatur velit vel dolores, deserunt
-               praesentium magni veritatis nam labore ipsa.</p>
+            <p>Crea un nuovo account in pochi minuti o accedi al tuo già
+               esistente,
+               scegli il mezzo che ti piace di piu` e sei pronto a partire.
+            </p>
          </div>
          <div class="col-lg-4">
-            <img src="https://source.unsplash.com/300x300/?bike" alt="">
+            <img src="img/home/loghi/volante_red.png" alt="">
             <h3>Guida</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo doloremque rem fugit atque esse id
-               voluptatibus nulla totam iste nobis.</p>
+            <p>Ora che sei a bordo, metti il casco, allaccia la cintura, e goditi il mezzo noleJato.</p>
          </div>
          <div class="col-lg-4">
-            <img src="https://source.unsplash.com/300x300/?scooter" alt="">
+            <img src="img/home/loghi/parking.png" alt="">
             <h3>Parcheggia</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, aliquid fuga? Consequuntur velit quia
-               repudiandae praesentium nostrum sed veniam ut.</p>
+            <p>Arriva a destinazione sano e salvo e assicurati che il nostro veicolo sia accuratamente parcheJato.
+            </p>
          </div>
       </div>
-
    </div>
 
 
-   <div class="container carousel">
 
-      <!-- Slider main container -->
-      <div class="swiper">
-         <!-- Additional required wrapper -->
-         <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide">
-               <img src="https://source.unsplash.com/600x600/?girls" alt="">
+   <div class="container-fluid sfondoCarousel">
+      <div class="container categorie">
+         <h1>Le nostre Categorie</h1>
+      </div>
+      <div class="container carousel">
+         <!-- Slider main container -->
+         <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+               <!-- Slides -->
+               <div class="swiper-slide">
+                  <img src="img/home/veicoli/benzina.png" alt="">
+                  <h4>Benzina</h4>
+               </div>
+               <div class="swiper-slide">
+                  <img src="img/home/veicoli/elettrica.png" alt="">
+                  <h4>Elettriche</h4>
+               </div>
+               <div class="swiper-slide">
+                  <img src="img/home/veicoli/diesel.png" alt="">
+                  <h4>Diesel</h4>
+               </div>
+               <div class="swiper-slide">
+                  <img src="img/home/veicoli/hybrid.png" alt="">
+                  <h4>Ibride</h4>
+               </div>
+               <div class="swiper-slide">
+                  <img src="img/home/veicoli/bicicletta.png" alt="">
+                  <h4>Biciclette</h4>
+               </div>
+               <div class="swiper-slide">
+                  <img src="img/home/veicoli/monopattino.png" alt="">
+                  <h4>Monopattini</h4>
+               </div>
+               <div class="swiper-slide">
+                  <img src="https://source.unsplash.com/600x400/?gift" alt="">
+                  <h4>Special</h4>
+               </div>
             </div>
-            <div class="swiper-slide">
-               <img src="https://source.unsplash.com/600x600/?motorbike" alt="">
-            </div>
-            <div class="swiper-slide">
-               <img src="https://source.unsplash.com/600x600/?city" alt="">
-            </div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
          </div>
-         <!-- If we need navigation buttons -->
-         <div class="swiper-button-prev"></div>
-         <div class="swiper-button-next"></div>
       </div>
    </div>
 
@@ -102,6 +140,15 @@
       </video>
    </div>
 
+   <div class="footer" id="footer">
+      <p>Made with &#10084; by Group One (JATO45) - 2022</p>
+      <p>Partita IVA: IT 01638736257</p>
+   </div>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+      integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <!-- BOOTSRAP -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
@@ -110,46 +157,7 @@
    <!-- SWIPER -->
    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
-   <script type="text/javascript">
-      const swiper = new Swiper('.swiper', {
-         // Optional parameters
-         direction: 'horizontal',
-         loop: true,
-
-         breakpoints: {
-            640: {
-               slidesPerView: 2,
-               spaceBetween: 20,
-            },
-            768: {
-               slidesPerView: 3,
-               spaceBetween: 40,
-            },
-            1024: {
-               slidesPerView: 3,
-               spaceBetween: 50,
-            },
-         },
-
-         autoHeight: true,
-
-         // If we need pagination
-         pagination: {
-            el: '.swiper-pagination',
-         },
-
-         // Navigation arrows
-         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-         },
-
-         // And if we need scrollbar
-         scrollbar: {
-            el: '.swiper-scrollbar',
-         },
-      });
-   </script>
+   <script src="script/home.js"></script>
 
 </body>
 

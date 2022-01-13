@@ -1,0 +1,89 @@
+body {
+   background-color: #F5F5F5;
+   font-family: 'Poppins', sans-serif;
+}
+
+img {
+   max-width: 100%;
+   height: auto;
+}
+
+.margin {
+   height: 126px;
+   background-color: #9ccd76f3;
+}
+
+.hamburger {
+   color: white;
+}
+
+.btnLogin {
+   background-color: greenyellow;
+}
+
+.btn-submit {
+   background-color: #9ccd76f3;
+}
+
+.navbar {
+   background-color: #9ccd76f3;
+}
+
+.nav-link {
+   color: honeydew;
+}
+
+.nav-link:hover {
+   color: black;
+}
+
+.titolo {
+   text-align: center;
+   margin-top: 5rem;
+   margin-bottom: 5rem;
+
+}
+
+.tipologia {
+   text-align: center;
+}
+
+.categoria {
+   width: 48%;
+   margin: auto;
+   margin-top: 2rem;
+}
+
+.tipo {
+   display: flex;
+   justify-content: space-around;
+}
+
+.veicolo {
+   background: white;
+   padding: 1rem;
+   width: 300px;
+   border-radius: 2%;
+   margin: auto;
+}
+
+.veicolo img {
+   border-radius: 2%;
+}
+
+.veicolo h4 {
+   margin-top: 0.5rem;
+}
+
+.footer {
+   background-color: rgb(155, 205, 118);
+   height: 126px;
+   width: 100%;
+   text-align: center;
+   padding: 3rem;
+   margin-top: 3rem;
+}
+
+.footer p {
+   margin: 0px;
+}
