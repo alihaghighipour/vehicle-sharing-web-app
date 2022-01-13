@@ -1,5 +1,6 @@
 body {
    background-color: #F5F5F5;
+   font-family: 'Poppins', sans-serif;
 }
 
 img {
@@ -73,6 +74,7 @@ img {
    width: 100%;
    text-align: center;
    padding: 3rem;
+   margin-top: 5rem;
 }
 
 .footer p {

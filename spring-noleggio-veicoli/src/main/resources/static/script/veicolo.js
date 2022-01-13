@@ -28,6 +28,8 @@ if (Modernizr.localstorage) {
 
             links.insertBefore(inserimento, links.children[2]);
 
+            var view = document.getElementById('view');
+            view.setAttribute('href', 'view-admin.html');
          }
       })
    }
