@@ -8,6 +8,9 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin="" />
    <link rel="icon" href="img/home/loghi/logo_verde.png" type="image/icon type">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +41,7 @@
                   <a class="nav-link mx-1" aria-current="page" href="home.html">Home</a>
                   <a class="nav-link mx-1" href="informazioni.html">Chi siamo</a>
                   <a class="nav-link mx-1" href="view-utente.html" id="view">I Nostri mezzi</a>
-                  <a class="nav-link mx-1" href="#footer">Contatti</a>
+                 
                   <form action="login.html" id="login">
                      <button type="submit" class="btnLogin btn rounded-pill mx-1">Login</button>
                   </form>
@@ -88,43 +91,43 @@
 
 
 
-   <div class="container-fluid sfondoCarousel">
+   <div class="container-fluid sfondoCarousel" >
       <div class="container categorie">
          <h1>Le nostre Categorie</h1>
       </div>
       <div class="container carousel">
          <!-- Slider main container -->
-         <div class="swiper">
+         <div class="swiper" id="id-carusel">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                <!-- Slides -->
-               <div class="swiper-slide">
+               <div class="swiper-slide imgPresentazione">
                   <img src="img/home/veicoli/benzina.png" alt="">
                   <h4>Benzina</h4>
                </div>
-               <div class="swiper-slide">
+               <div class="swiper-slide imgPresentazione">
                   <img src="img/home/veicoli/elettrica.png" alt="">
                   <h4>Elettriche</h4>
                </div>
-               <div class="swiper-slide">
+               <div class="swiper-slide imgPresentazione">
                   <img src="img/home/veicoli/diesel.png" alt="">
                   <h4>Diesel</h4>
                </div>
-               <div class="swiper-slide">
+               <div class="swiper-slide imgPresentazione">
                   <img src="img/home/veicoli/hybrid.png" alt="">
                   <h4>Ibride</h4>
                </div>
-               <div class="swiper-slide">
+               <div class="swiper-slide imgPresentazione">
                   <img src="img/home/veicoli/bicicletta.png" alt="">
                   <h4>Biciclette</h4>
                </div>
-               <div class="swiper-slide">
+               <div class="swiper-slide imgPresentazione">
                   <img src="img/home/veicoli/monopattino.png" alt="">
                   <h4>Monopattini</h4>
                </div>
-               <div class="swiper-slide">
-                  <img src="https://source.unsplash.com/600x400/?gift" alt="">
-                  <h4>Special</h4>
+               <div class="swiper-slide imgPresentazione">
+                  <img src="img/home/veicoli/motorino.jpg" alt="">
+                  <h4>Scooter</h4>
                </div>
             </div>
             <!-- If we need navigation buttons -->
@@ -133,6 +136,17 @@
          </div>
       </div>
    </div>
+
+   <!-- MAPPA -->
+   <div class="container mappa">
+      <div class="row mappa">
+         <h1>NoleJato a Torino</h1>
+      </div>
+      <div class="row">
+         <div id="map" class="col col-12"></div>
+      </div>
+   </div>
+
 
    <div class="container homeVideo">
       <video autoplay muted loop>
@@ -156,7 +170,10 @@
 
    <!-- SWIPER -->
    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin="">
+   </script>
    <script src="script/home.js"></script>
 
 </body>

@@ -3,6 +3,14 @@ body {
    font-family: 'Poppins', sans-serif;
 }
 
+body.admin-body {
+	background:url("../img/admin/sfondo-admin.jpg");
+	background-position: center center;
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-attachment:fixed;
+}
+
 img {
    max-width: 100%;
    height: auto;
@@ -18,9 +26,14 @@ img {
 }
 
 .form-container {
-   max-width: 500px;
+   max-width: 600px;
    margin: auto;
    margin-top: 5rem;
+   -webkit-backdrop-filter: blur(10px);
+	backdrop-filter:blur(10px);
+	background: rgba(255,255,255,0.5);
+	padding: 2rem;
+	border-radius: 6px;
 }
 
 .form-container h2 {
@@ -48,6 +61,12 @@ img {
 
 .btn-submit {
    background-color: #9ccd76f3;
+   color: honeydew;
+   font-weight: bold;
+}
+
+.fa-check-circle {
+   color: #9ccd76f3;
 }
 
 .navbar {
@@ -77,4 +96,11 @@ button {
 
 .footer p {
    margin: 0px;
+}
+
+.alimentazionebottoni {
+	color: honeydew;
+	border: 1px solid honeydew;
+	background: #9ccd76f3;
+	
 }

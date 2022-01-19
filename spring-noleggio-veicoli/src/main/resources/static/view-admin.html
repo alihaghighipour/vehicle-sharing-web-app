@@ -39,7 +39,7 @@
                   <a class="nav-link mx-1" aria-current="page" href="home.html">Home</a>
                   <a class="nav-link mx-1" href="informazioni.html">Chi siamo</a>
                   <a class="nav-link mx-1" href="view-utente.html" id="view">I Nostri mezzi</a>
-                  <a class="nav-link mx-1" href="#footer">Contatti</a>
+                  
                   <form action="login.html" id="login">
                      <button type="submit" class="btnLogin btn rounded-pill mx-1">Login</button>
                   </form>
@@ -60,14 +60,16 @@
       <!-- TIPOLOGIA VEICOLO -->
       <div class="categoria mb-3" id="form-categoria-filtro">
          <select class="form-select" aria-label="Default select example">
-            <option selected>Tutti i veicoli</option>
+            <option selected>Scegli filtro</option>
+            <option value="5">Tutti i veicoli</option>
             <option value="1">Automobile</option>
             <option value="2">Monopattino</option>
             <option value="3">Bicicletta</option>
-            <option value="3">Motorino</option>
-            <option value="4">Speciale</option>
+            <option value="4">Motorino</option>
          </select>
       </div>
+
+      <button id="btnDisp" class="btn btn-success">Mostra veicoli diponibili</button>
 
    </div>
 
@@ -96,25 +98,24 @@
                            <option value="2">Monopattino</option>
                            <option value="3">Bicicletta</option>
                            <option value="4">Motorino</option>
-                           <option value="5">Speciale</option>
                         </select>
                      </div>
 
                      <!-- ALIMENTAZIONE -->
                      <div class="mb-3 tipo" id="form-alimentazione">
-                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
 
                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-                           <label class="btn btn-outline-primary" for="btnradio1">Elettrico</label>
+                           <label class="btn alimentazionebottoni" for="btnradio1">Elettrico</label>
 
                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                           <label class="btn btn-outline-primary" for="btnradio2">Hybrid</label>
+                           <label class="btn alimentazionebottoni" for="btnradio2">Hybrid</label>
 
                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                           <label class="btn btn-outline-primary" for="btnradio3">Benzina</label>
+                           <label class="btn alimentazionebottoni" for="btnradio3">Benzina</label>
 
                            <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                           <label class="btn btn-outline-primary" for="btnradio4">Diesel</label>
+                           <label class="btn alimentazionebottoni" for="btnradio4">Diesel</label>
 
                         </div>
                      </div>

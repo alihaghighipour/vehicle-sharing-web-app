@@ -24,5 +24,7 @@ body {
 }
 
 .form-container button {
-    background-color:#9ccd76f3;
+    background-color: #9ccd76f3;
+    color: honeydew;
+    font-weight: bold;
 }

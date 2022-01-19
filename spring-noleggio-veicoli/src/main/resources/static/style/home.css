@@ -47,6 +47,10 @@ img {
    display: none;
 }
 
+.imgPresentazione{
+   cursor: pointer;
+}
+
 @media (min-width: 768px) {
    .testo-hero {
        text-align: center;
@@ -145,4 +149,21 @@ img {
 
 .footer p {
    margin: 0px;
+}
+
+
+/* MAPPA */
+
+#map {
+   height: 700px;
+   width: 95%;
+   margin: auto;
+   margin-top: 2rem;
+   border-radius: 20px;
+   z-index:0;
+}
+
+.mappa {
+   text-align: center;
+   margin-top: 5rem;
 }

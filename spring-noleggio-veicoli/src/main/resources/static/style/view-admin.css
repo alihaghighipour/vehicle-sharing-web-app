@@ -23,6 +23,18 @@ img {
 
 .btn-submit {
    background-color: #9ccd76f3;
+   color: honeydew;
+   font-weight: bold;
+}
+
+.fa-check-circle {
+   color: #9ccd76f3;
+}
+
+.alimentazionebottoni {
+   color: honeydew;
+   border: 1px solid honeydew;
+   background: #9ccd76f3;
 }
 
 .navbar {

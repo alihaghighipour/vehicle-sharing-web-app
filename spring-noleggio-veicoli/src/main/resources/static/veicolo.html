@@ -20,7 +20,7 @@
     <title>Info Veicolo</title>
 </head>
 
-<body>
+<body id="veicolo-body">
 
     <div class="margin"></div>
 
@@ -42,7 +42,7 @@
                         <a class="nav-link mx-1" aria-current="page" href="home.html">Home</a>
                         <a class="nav-link mx-1" href="informazioni.html">Chi siamo</a>
                         <a class="nav-link mx-1" href="view-utente.html" id="view">I Nostri mezzi</a>
-                        <a class="nav-link mx-1" href="#footer">Contatti</a>
+
                         <form action="login.html" id="login">
                             <button type="submit" class="btnLogin btn rounded-pill mx-1">Login</button>
                         </form>
@@ -63,10 +63,20 @@
             <div class="col-sm-12 col-md-6 info my-auto" id="info">
 
             </div>
-            <div id="map"></div>
+            <div class="col col-12 messaggio">
+
+                <div id="demoSuccess" class="d-none"><i class="far fa-check-square"></i> Prenotazione effettuata con
+                    successo, il veicolo ti aspetta!</div>
+                <div id="demoFail" class="d-none"><i class="far fa-times-circle"></i> Mi spiace, veicolo non disponibile
+                </div>
+
+            </div>
+            <div id="map" class="col col-12"></div>
 
         </div>
     </div>
+
+
 
 
 
@@ -83,13 +93,13 @@
     <!-- BOOTSRAP -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!-- MAPPA -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin="">
-    </script>
+        </script>
     <script src="script/veicolo.js"></script>
 </body>
 

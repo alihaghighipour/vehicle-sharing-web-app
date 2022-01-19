@@ -69,14 +69,14 @@ $().ready(function () {
       type: 'GET',
       dataType: 'json',
       success: function (data) {
-
+		 $("#lista").html("");
          data.forEach(element => {
             $("#lista").append(`<li class="veicolo col-lg-3 mt-3 hover-shadow " id="li-` + element.id + `">
             <img src="` + element.urlImmagine + `" alt="">
             <h4>` + element.modello + `</h4>
 			<p>`+ element.alimentazione +` - `+ element.cilindrata +` cc</p>
-            <button class="btn btn-success" id="mostra-`+ element.id +`">Mostra</button>
-            <button id="modifica-` + element.id + `" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifica</i></button>  
+            <button class="btn btn-primary" id="mostra-`+ element.id +`">Mostra</button>
+            <button id="modifica-` + element.id + `" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifica</button>  
             <button id="elimina-` + element.id + `" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button> 
             </li>`);
 
@@ -116,8 +116,6 @@ $("#form-categoria-filtro").change(function () {
       case "Motorino":
          urlApi += '/categoria/Motorino';
          break;
-      case "Speciale":
-         break;
    }
 
    $.ajax({
@@ -131,8 +129,8 @@ $("#form-categoria-filtro").change(function () {
             <img src="` + element.urlImmagine + `" alt="">
             <h4>` + element.modello + `</h4>
 			<p>`+ element.alimentazione +` - `+ element.cilindrata +` cc</p>
-            <button class="btn btn-success" id="mostra-`+ element.id +`">Mostra</button>
-            <button id="modifica-` + element.id + `" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifica</i></button>  
+            <button class="btn btn-primary" id="mostra-`+ element.id +`">Mostra</button>
+            <button id="modifica-` + element.id + `" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifica</button>  
             <button id="elimina-` + element.id + `" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button> 
             </li>`);
 
@@ -172,14 +170,13 @@ function eliminaVeicolo(event) {
          var liElement = document.getElementById('li-' + event.data.veicolo.id);
          //liElement.setAttribute('class', 'animate__animated animate__fadeOutLeft');
 
-
          liElement.remove();  
       }
    })
 }
 
 function modificaVeicolo(event) {
-
+	console.log('ciao modifica');
    switch (event.data.veicolo.categoria) {
       case "Automobile":
          $("#form-categoria").val("1");
@@ -201,15 +198,10 @@ function modificaVeicolo(event) {
          break;
       case "Motorino":
          $("#form-categoria").val("4");
+         
          $('#form-alimentazione').removeClass('d-none');
          $('#form-cilindrata').removeClass('d-none');
          $('#cilindrata-label').removeClass('d-none');
-         break;
-      case "Speciale":
-         $('#form-alimentazione').removeClass('d-none');
-         $('#form-cilindrata').removeClass('d-none');
-         $('#cilindrata-label').removeClass('d-none');
-         $("#form-categoria").val("5");
          break;
       default:
          $("#form-categoria").val("0");
@@ -245,12 +237,12 @@ function modificaVeicolo(event) {
    $('#form-coordinate').val(event.data.veicolo.posizione);
 
    $("#form-modifica").submit(function (e) {
-
+      console.log("ciao form");
       e.preventDefault();
 
       const immagine = document.getElementById("immagine").files[0];
 
-      const categoriaText = $('#form-categoria option:selected').text();
+      var categoriaText = $('#form-categoria option:selected').text();
       var alimentazioneText = $('input[name="btnradio"]:checked + label').text();
 
       switch (categoriaText) {
@@ -300,6 +292,7 @@ function refreshPagina() {
    window.location.reload();
 }
 
+
 $('#form-categoria').change(function () {
 
    switch ($('#form-categoria option:selected').text()) {
@@ -318,4 +311,41 @@ $('#form-categoria').change(function () {
 
 $("#form-categoria").focus(function () {
    $("#demo").addClass("d-none");
+})
+
+$("#btnDisp").click(function() {
+
+   
+
+   $.ajax({
+      url: 'http://localhost:9020/noleggio-veicoli/api/veicoli/disponibili',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+		 $("#lista").html("");
+         data.forEach(element => {
+            $("#lista").append(`<li class="veicolo col-lg-3 mt-3 hover-shadow " id="li-` + element.id + `">
+            <img src="` + element.urlImmagine + `" alt="">
+            <h4>` + element.modello + `</h4>
+			<p>`+ element.alimentazione +` - `+ element.cilindrata +` cc</p>
+            <button class="btn btn-primary" id="mostra-`+ element.id +`">Mostra</button>
+            <button id="modifica-` + element.id + `" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifica</button>  
+            <button id="elimina-` + element.id + `" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button> 
+            </li>`);
+
+            $("#mostra-" + element.id).click({
+               veicolo: element
+            }, mostraVeicolo);
+
+            $("#elimina-" + element.id).click({
+               veicolo: element
+            }, eliminaVeicolo);
+
+            $("#modifica-" + element.id).click({
+               veicolo: element
+            }, modificaVeicolo);
+
+         });
+      }
+   })
 })

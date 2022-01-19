@@ -3,63 +3,63 @@ var risparmi = [];
 var totale = 0;
 
 if (Modernizr.localstorage) {
-  const utente = JSON.parse(localStorage.getItem("utente"));
-  if (utente != null) {
+   const utente = JSON.parse(localStorage.getItem("utente"));
+   if (utente != null) {
 
-    $('#login').addClass('d-none');
-    $('#logout').removeClass('d-none');
-    $('#logout').click(logout);
+      $('#login').addClass('d-none');
+      $('#logout').removeClass('d-none');
+      $('#logout').click(logout);
 
-    const formData = new FormData();
-    formData.append("token", utente.token);
-    formData.append("ruolo", "Admin");
+      const formData = new FormData();
+      formData.append("token", utente.token);
+      formData.append("ruolo", "Admin");
 
-    $.ajax({
-      url: 'http://localhost:9020/noleggio-veicoli/api/utenti/autorizzato',
-      type: 'POST',
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function () {
-        var links = document.getElementById('links');
+      $.ajax({
+         url: 'http://localhost:9020/noleggio-veicoli/api/utenti/autorizzato',
+         type: 'POST',
+         data: formData,
+         processData: false,
+         contentType: false,
+         success: function () {
+            var links = document.getElementById('links');
 
-        var inserimento = document.createElement('a');
-        var inserimentoText = document.createTextNode('Aggiungi veicoli');
-        inserimento.appendChild(inserimentoText);
+            var inserimento = document.createElement('a');
+            var inserimentoText = document.createTextNode('Aggiungi veicoli');
+            inserimento.appendChild(inserimentoText);
 
-        inserimento.setAttribute('href', 'inserimento.html');
-        inserimento.setAttribute('class', 'nav-link mx-1');
+            inserimento.setAttribute('href', 'inserimento.html');
+            inserimento.setAttribute('class', 'nav-link mx-1');
 
-        links.insertBefore(inserimento, links.children[2]);
+            links.insertBefore(inserimento, links.children[2]);
 
-        var view = document.getElementById('view');
-        view.setAttribute('href', 'view-admin.html');
-      }
-    })
-  }
+            var view = document.getElementById('view');
+            view.setAttribute('href', 'view-admin.html');
+         }
+      })
+   }
 }
 
 function logout() {
 
-  if (Modernizr.localstorage) {
+   if (Modernizr.localstorage) {
 
-    const utente = JSON.parse(localStorage.getItem("utente"));
-    const formData = new FormData();
-    formData.append('token', utente.token);
+      const utente = JSON.parse(localStorage.getItem("utente"));
+      const formData = new FormData();
+      formData.append('token', utente.token);
 
-    $.ajax({
+      $.ajax({
 
-      url: 'http://localhost:9020/noleggio-veicoli/api/utenti/logout',
-      type: 'POST',
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function () {
-        localStorage.removeItem("utente");
-        window.location.href = 'home.html';
-      }
-    })
-  }
+         url: 'http://localhost:9020/noleggio-veicoli/api/utenti/logout',
+         type: 'POST',
+         data: formData,
+         processData: false,
+         contentType: false,
+         success: function () {
+            localStorage.removeItem("utente");
+            window.location.href = 'home.html';
+         }
+      })
+   }
 }
 
 $().ready(function () {

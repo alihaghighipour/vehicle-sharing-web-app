@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+   <link rel="icon" href="img/home/loghi/logo_verde.png" type="image/icon type">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="style/view-utente.css">
+
+   <title>I nostri mezzi</title>
+</head>
+
+<body>
+
+   <div class="margin"></div>
+
+   <div class="container">
+
+      <!-- NAVBAR -->
+      <nav class="navbar navbar-expand-lg fixed-top">
+         <div class=" container">
+            <a class="navbar-brand" href="#">
+               <img src="img/home/loghi/logo_bianco.png" width=100px height="auto" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+               aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+               <i class="hamburger fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+               <div class="navbar-nav ms-auto" id="links">
+                  <a class="nav-link mx-1" aria-current="page" href="home.html">Home</a>
+                  <a class="nav-link mx-1" href="informazioni.html">Chi siamo</a>
+                  <a class="nav-link mx-1" href="view-utente.html" id="view">I Nostri mezzi</a>
+                  
+                  <form action="login.html" id="login">
+                     <button type="submit" class="btnLogin btn rounded-pill mx-1">Login</button>
+                  </form>
+                  <button class="btnLogin btn rounded-pill mx-1 d-none" id="logout">Logout</button>
+               </div>
+            </div>
+         </div>
+      </nav>
+   </div>
+
+   <div class="container titolo">
+      <h2>Cosa vuoi guidare oggi?</h2>
+   </div>
+
+   <div class="container tipologia">
+
+      <h4>Seleziona una categoria</h4>
+      <!-- TIPOLOGIA VEICOLO -->
+      <div class="categoria mb-3" id="form-categoria-filtro">
+         <select class="form-select" aria-label="Default select example">
+            <option selected>Scegli filtro</option>
+            <option value="5">Tutti i veicoli</option>
+            <option value="1">Automobile</option>
+            <option value="2">Monopattino</option>
+            <option value="3">Bicicletta</option>
+            <option value="4">Motorino</option>
+         </select>
+      </div>
+
+      <button id="btnDisp" class="btn btn-success">Mostra veicoli diponibili</button>
+      
+
+
+   </div>
+
+   <div class="container">
+      <ul class="veicoli row list-unstyled" id="lista">
+      </ul>
+   </div>
+
+   
+
+
+   <div class="footer" id="footer">
+      <p>Made with &#10084; by Group One (JATO45) - 2022</p>
+      <p>Partita IVA: IT 01638736257</p>
+   </div>
+
+   <!-- JQUERY -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <!-- BOOTSRAP -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+   </script>
+
+   <script src="script/view-utente.js"></script>
+</body>
+
+</html>

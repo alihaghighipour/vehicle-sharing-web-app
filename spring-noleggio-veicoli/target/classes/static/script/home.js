@@ -92,3 +92,65 @@ const swiper = new Swiper('.swiper', {
     el: '.swiper-scrollbar',
   },
 });
+
+$(".imgPresentazione").click(function () {
+  window.location.href = "view-utente.html";
+})
+
+
+$().ready(function() {
+
+  $.ajax({
+    url: 'http://localhost:9020/noleggio-veicoli/api/veicoli/categoria/Automobile',
+    type: 'GET',
+    dataType: 'json',
+    success: function (data) {
+      
+      data.forEach(element => {
+        aggiungiMappa(element.urlImmagine, element.posizione);
+      })
+    }
+  })
+
+})
+
+var map = L.map('map').setView([45.0703, 7.6869], 13);
+
+function aggiungiMappa (iconUrl, coordinate) {
+
+  const coordArray = coordinate.split(", ");
+
+  var Icon = L.icon({
+    iconUrl: iconUrl,
+    iconSize: [80, 40],
+    iconAnchor: [35, 10],
+    popupAnchor: [0, 0]
+  });
+  
+  
+  var marker = L.marker([coordArray[0], coordArray[1]], {
+    icon: Icon
+  }).addTo(map);
+  
+  
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiZXJhbmlvciIsImEiOiJja3liZnlvbWswZjJuMndwOGZtanR1dWJ1In0.vabUElrB3-OTMKYK2pIXjw'
+  }).addTo(map);
+  
+  var popup = L.popup();
+  
+  function onMapClick(e) {
+    popup
+      .setLatLng(e.latlng)
+      .setContent("You clicked the map at " + e.latlng.toString())
+      .openOn(map);
+  }
+  
+  map.on('click', onMapClick);
+}
+
