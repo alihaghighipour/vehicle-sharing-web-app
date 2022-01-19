@@ -85,10 +85,9 @@ img {
 
 .messaggio{
    max-width: 25%;
-   justify-content: center;
 }
 
-#demoFail, #demoSuccess {
+#demoSuccess {
   
    text-align: center;
    justify-content: center;
@@ -100,10 +99,21 @@ img {
 
 }
 
+#demoFail {
+   text-align: center;
+   justify-content: center;
+   color: honeydew;
+   border: 2px solid red;
+   border-radius: 100px;
+   
+   background-color: red;
+}
+
+
 .fa-check-square {
    color: rgb(155, 205, 118);
 }
 
 .fa-times-circle{
-   color: red;
+   color: honeydew;
 }
